@@ -1,0 +1,17 @@
+{
+    "name": "oop/project",
+    "type": "mit",
+    "autoload": {
+        "psr-4": {
+            "Oop\\Project\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MohAdel13",
+            "email": "mohammedofficial1311@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
