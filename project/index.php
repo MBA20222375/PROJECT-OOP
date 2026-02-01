@@ -5,7 +5,6 @@ require_once "config.php";
 require_once "views/layauts/header.php";
 require_once "vendor/autoload.php";
 
-
 use Projeats\ProjectOop\Database;
 use Projeats\ProjectOop\Prodaut;
 
@@ -18,8 +17,11 @@ switch ($page) {
         require "views/home.php";
         break;
     case "register":
-         require "views/auth/account.php";
-          break;
+        require "views/auth/account.php";
+        break;
+    case "logout":
+        require "APP/contollers/logoutcontoller.php";
+        break;
     case "shop":
         require "views/shop.php";
         break;
@@ -69,7 +71,7 @@ switch ($page) {
         require "App/controllers/AccountController.php";
         break;
     default:
-        require "views/home.php";
-        break;
+        //require "views/404.php";
+       // break;
 }
 require_once "./views/layauts/Footer.php";

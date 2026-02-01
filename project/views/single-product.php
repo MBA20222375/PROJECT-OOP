@@ -26,7 +26,7 @@
               شحن مجاني للطلبات 💥 عند الشراء ب 699ج او اكثر
             </div>
             <div class="header__branches d-flex gap-2 align-items-center">
-              <a class="text-white text-decoration-none" href="branches.html">
+              <a class="text-white text-decoration-none" href="index.php?page=branches">
                 <i class="fa-solid fa-location-dot"></i>
                 فروعنا  
               </a>
@@ -60,12 +60,12 @@
                   <i class="fa-solid fa-chevron-down fa-2xs"></i>
                 </a>
                 <ul class="nav__user-list position-absolute p-0 list-unstyled bg-white">
-                  <li class="nav__link nav__user-link"><a href="profile.html">لوحة التحكم</a></li>
-                  <li class="nav__link nav__user-link"><a href="orders.html">الطلبات</a></li>
-                  <li class="nav__link nav__user-link"><a href="address.html">العنوان</a></li>
-                  <li class="nav__link nav__user-link"><a href="account_details.html">تفاصيل الحساب</a></li>
-                  <li class="nav__link nav__user-link"><a href="favourites.html">المفضلة</a></li>
-                  <li class="nav__link nav__user-link"><a href="">تسجيل الخروج</a></li>
+                  <li class="nav__link nav__user-link"><a href="index.php?page=profile">لوحة التحكم</a></li>
+                  <li class="nav__link nav__user-link"><a href="index.php?page=orders">الطلبات</a></li>
+                  <li class="nav__link nav__user-link"><a href="index.php?page=address">العنوان</a></li>
+                  <li class="nav__link nav__user-link"><a href="index.php?page=account_details">تفاصيل الحساب</a></li>
+                  <li class="nav__link nav__user-link"><a href="index.php?page=favourites">المفضلة</a></li>
+                  <li class="nav__link nav__user-link"><a href="index.php?page=logout">تسجيل الخروج</a></li>
                 </ul>
               </li> -->
               <li class="nav__link">
@@ -101,7 +101,7 @@
           <div class="nav-mobile fixed-bottom d-block d-lg-none">
             <ul class="nav-mobile__list d-flex justify-content-around gap-2 list-unstyled  m-0 border-top">
               <li class="nav-mobile__link">
-                <a class="d-flex align-items-center flex-column gap-1 text-decoration-none" href="index.html">
+                <a class="d-flex align-items-center flex-column gap-1 text-decoration-none" href="index.php?page=home">
                   <i class="fa-solid fa-house"></i>
                   الرئيسية
                 </a>
@@ -118,7 +118,7 @@
                 </a>
               </li>
               <li class="nav-mobile__link d-flex align-items-center flex-column gap-1">
-                <a class="d-flex align-items-center flex-column gap-1 text-decoration-none" href="favourites.html">
+                <a class="d-flex align-items-center flex-column gap-1 text-decoration-none" href="index.php?page=favourites">
                   <i class="fa-regular fa-heart"></i>
                   المفضلة 
                 </a>
@@ -146,9 +146,9 @@
               <img class="w-100" src="assets/images/logo.png" alt="">
             </div>
             <ul class="nav__list list-unstyled">
-              <li class="nav__link nav__side-link"><a href="shop.html" class="py-3">جميع المنتجات</a></li>
-              <li class="nav__link nav__side-link"><a href="shop.html" class="py-3">كتب عربيه</a></li>
-              <li class="nav__link nav__side-link"><a href="shop.html" class="py-3">كتب انجليزية</a></li>
+              <li class="nav__link nav__side-link"><a href="index.php?page=shop" class="py-3">جميع المنتجات</a></li>
+              <li class="nav__link nav__side-link"><a href="index.php?page=shop" class="py-3">كتب عربيه</a></li>
+              <li class="nav__link nav__side-link"><a href="index.php?page=shop" class="py-3">كتب انجليزية</a></li>
             </ul>
           </div>
         </div>
@@ -352,10 +352,10 @@
           <div class="single-product__categories">
             <p class="mb-0">رمز المنتج: غير محدد</p>
             <div>
-              <span>التصنيفات: </span><a href="shop.html">new</a>, <a href="shop.html">احذية</a>, <a href="shop.html">رجاليه</a>
+              <span>التصنيفات: </span><a href="index.php?page=shop">new</a>, <a href="index.php?page=shop">احذية</a>, <a href="index.php?page=shop">رجاليه</a>
             </div>
             <div>
-              <span>الوسوم: </span><a href="shop.html">pr150</a>, <a href="shop.html">flotrate</a>
+              <span>الوسوم: </span><a href="index.php?page=shop">pr150</a>, <a href="index.php?page=shop">flotrate</a>
             </div>
           </div>
         </div>
@@ -482,7 +482,7 @@
         <div class="row">
           <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
             <div class="product__header mb-3">
-              <a href="single-product.html">
+              <a href="index.php?page=single-product">
                 <div class="product__img-cont">
                   <img class="product__img w-100 h-100 object-fit-cover" src="assets/images/product-1.webp" data-id="white">
                 </div>
@@ -496,7 +496,7 @@
               </div>
             </div>
             <div class="product__title text-center">
-              <a class="text-black text-decoration-none" href="single-product.html">
+              <a class="text-black text-decoration-none" href="index.php?page=single-product">
                 Flutter Apprentice
               </a>
             </div>
@@ -525,7 +525,7 @@
         <div class="row">
           <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
             <div class="product__header mb-3">
-              <a href="single-product.html">
+              <a href="index.php?page=single-product">
                 <div class="product__img-cont">
                   <img class="product__img w-100 h-100 object-fit-cover" src="assets/images/product-1.webp" data-id="white">
                 </div>
@@ -539,7 +539,7 @@
               </div>
             </div>
             <div class="product__title text-center">
-              <a class="text-black text-decoration-none" href="single-product.html">
+              <a class="text-black text-decoration-none" href="index.php?page=single-product">
                 Flutter Apprentice
               </a>
             </div>
@@ -557,7 +557,7 @@
           </div>
           <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
             <div class="product__header mb-3">
-              <a href="single-product.html">
+              <a href="index.php?page=single-product">
                 <div class="product__img-cont">
                   <img class="product__img w-100 h-100 object-fit-cover" src="assets/images/product-2.webp" data-id="white">
                 </div>
@@ -571,7 +571,7 @@
               </div>
             </div>
             <div class="product__title text-center">
-              <a class="text-black text-decoration-none" href="single-product.html">
+              <a class="text-black text-decoration-none" href="index.php?page=single-product">
                 Modern Full-Stack Development
               </a>
             </div>
@@ -589,7 +589,7 @@
           </div>
           <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
             <div class="product__header mb-3">
-              <a href="single-product.html">
+              <a href="index.php?page=single-product">
                 <div class="product__img-cont">
                   <img class="product__img w-100 h-100 object-fit-cover" src="assets/images/product-3.webp" data-id="white">
                 </div>
@@ -621,7 +621,7 @@
           </div>
           <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
             <div class="product__header mb-3">
-              <a href="single-product.html">
+              <a href="index.php?page=single-product">
                 <div class="product__img-cont">
                   <img class="product__img w-100 h-100 object-fit-cover" src="assets/images/product-4.webp" data-id="white">
                 </div>
@@ -701,12 +701,12 @@
               عن Coding arabic
             </div>
             <div class="footer__list list-unstyled p-0">
-              <li><a class="footer__link text-decoration-none d-inline-block text-gray py-1" href="about.html">من نحن</a></li>
-              <li><a class="footer__link text-decoration-none d-inline-block text-gray py-1" href="contact.html">تواصل معنا</a></li>
-              <li><a class="footer__link text-decoration-none d-inline-block text-gray py-1" href="privacy-policy.html">سياسة الخصوصية</a></li>
-              <li><a class="footer__link text-decoration-none d-inline-block text-gray py-1" href="refund-policy.html">سياسة الاستبدال و
+              <li><a class="footer__link text-decoration-none d-inline-block text-gray py-1" href="index.php?page=about">من نحن</a></li>
+              <li><a class="footer__link text-decoration-none d-inline-block text-gray py-1" href="index.php?page=contact">تواصل معنا</a></li>
+              <li><a class="footer__link text-decoration-none d-inline-block text-gray py-1" href="index.php?page=privacy-policy">سياسة الخصوصية</a></li>
+              <li><a class="footer__link text-decoration-none d-inline-block text-gray py-1" href="index.php?page=refund-policy">سياسة الاستبدال و
                   الاسترجاع</a></li>
-              <li><a class="footer__link text-decoration-none d-inline-block text-gray py-1" href="track-order.html">تتبع طلبك</a></li>
+              <li><a class="footer__link text-decoration-none d-inline-block text-gray py-1" href="index.php?page=track-order">تتبع طلبك</a></li>
             </div>
           </div>
           <div class="col-md-6 col-lg-3 px-md-4 mb-5 mb-lg-0">

@@ -149,6 +149,8 @@
           <ul class="nav__list list-unstyled">
             <li class="nav__link nav__side-link">
               <a href="index.php?page=shop" class="py-3">جميع المنتجات</a>
+               <li class="nav__link nav__side-link"><a href="index.php?page=shop" class="py-3">كتب عربيه</a></li>
+            <li class="nav__link nav__side-link"><a href="index.php?page=shop" class="py-3">كتب انجليزية</a></li>
             </li>
           </ul>
         </div>
