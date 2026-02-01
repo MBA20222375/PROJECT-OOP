@@ -28,7 +28,7 @@
               شحن مجاني للطلبات 💥 عند الشراء ب 699ج او اكثر
             </div>
             <div class="header__branches d-flex gap-2 align-items-center">
-              <a class="text-white text-decoration-none" href="branches.html">
+              <a class="text-white text-decoration-none" href="index.php?page=branches">
                 <i class="fa-solid fa-location-dot"></i>
                 فروعنا
               </a>
@@ -52,7 +52,7 @@
               </button>
             </div>
             <div class="nav__logo">
-              <a href="index.html">
+              <a href="index.php?page=home">
                 <img class="h-100" src="assets/images/logo.png" alt="" />
               </a>
             </div>
@@ -74,15 +74,15 @@
                 <i class="fa-solid fa-chevron-down fa-2xs"></i>
               </a>
               <ul class="nav__user-list position-absolute p-0 list-unstyled bg-white">
-                <li class="nav__link nav__user-link"><a href="profile.html">لوحة التحكم</a></li>
-                <li class="nav__link nav__user-link"><a href="orders.html">الطلبات</a></li>
-                <li class="nav__link nav__user-link"><a href="account_details.html">تفاصيل الحساب</a></li>
-                <li class="nav__link nav__user-link"><a href="favourites.html">المفضلة</a></li>
-                <li class="nav__link nav__user-link"><a href="">تسجيل الخروج</a></li>
+                <li class="nav__link nav__user-link"><a href="index.php?page=profile">لوحة التحكم</a></li>
+                <li class="nav__link nav__user-link"><a href="index.php?page=orders">الطلبات</a></li>
+                <li class="nav__link nav__user-link"><a href="index.php?page=account_details">تفاصيل الحساب</a></li>
+                <li class="nav__link nav__user-link"><a href="index.php?page=favourites">المفضلة</a></li>
+                <li class="nav__link nav__user-link"><a href="index.php?page=logout">تسجيل الخروج</a></li>
               </ul>
             </li> -->
               <li class="nav__link">
-                <a class="d-flex align-items-center gap-2" href="account.html">
+                <a class="d-flex align-items-center gap-2" href="index.php?page=register">
                   تسجيل الدخول
                   <i class="fa-regular fa-user"></i>
                 </a>
@@ -90,7 +90,7 @@
               <li class="nav__link">
                 <a
                   class="d-flex align-items-center gap-2"
-                  href="favourites.html"
+                  href="index.php?page=favourites"
                 >
                   المفضلة
                   <div class="position-relative">
@@ -121,7 +121,7 @@
               <li class="nav-mobile__link">
                 <a
                   class="d-flex align-items-center flex-column gap-1 text-decoration-none"
-                  href="index.html"
+                  href="index.php?page=home"
                 >
                   <i class="fa-solid fa-house"></i>
                   الرئيسية
@@ -140,7 +140,7 @@
               >
                 <a
                   class="d-flex align-items-center flex-column gap-1 text-decoration-none"
-                  href="profile.html"
+                  href="index.php?page=profile"
                 >
                   <i class="fa-regular fa-user"></i>
                   حسابي
@@ -151,7 +151,7 @@
               >
                 <a
                   class="d-flex align-items-center flex-column gap-1 text-decoration-none"
-                  href="favourites.html"
+                  href="index.php?page=favourites"
                 >
                   <i class="fa-regular fa-heart"></i>
                   المفضلة
@@ -194,13 +194,13 @@
             </div>
             <ul class="nav__list list-unstyled">
               <li class="nav__link nav__side-link">
-                <a href="shop.html" class="py-3">جميع المنتجات</a>
+                <a href="index.php?page=shop" class="py-3">جميع المنتجات</a>
               </li>
               <li class="nav__link nav__side-link">
-                <a href="shop.html" class="py-3">كتب عربيه</a>
+                <a href="index.php?page=shop" class="py-3">كتب عربيه</a>
               </li>
               <li class="nav__link nav__side-link">
-                <a href="shop.html" class="py-3">كتب انجليزية</a>
+                <a href="index.php?page=shop" class="py-3">كتب انجليزية</a>
               </li>
             </ul>
           </div>
@@ -289,7 +289,7 @@
             <h2>تتبع طلبك</h2>
           </div>
           <div class="page-top__breadcrumb">
-            <a class="text-gray" href="index.html">الرئيسية</a> /
+            <a class="text-gray" href="index.php?page=home">الرئيسية</a> /
             <span class="text-gray">تتبع طلبك</span>
           </div>
         </div>
@@ -396,35 +396,35 @@
               <li>
                 <a
                   class="footer__link text-decoration-none d-inline-block text-gray py-1"
-                  href="about.html"
+                  href="index.php?page=about"
                   >من نحن</a
                 >
               </li>
               <li>
                 <a
                   class="footer__link text-decoration-none d-inline-block text-gray py-1"
-                  href="contact.html"
+                  href="index.php?page=contact"
                   >تواصل معنا</a
                 >
               </li>
               <li>
                 <a
                   class="footer__link text-decoration-none d-inline-block text-gray py-1"
-                  href="privacy-policy.html"
+                  href="index.php?page=privacy-policy"
                   >سياسة الخصوصية</a
                 >
               </li>
               <li>
                 <a
                   class="footer__link text-decoration-none d-inline-block text-gray py-1"
-                  href="refund-policy.html"
+                  href="index.php?page=refund-policy"
                   >سياسة الاستبدال و الاسترجاع</a
                 >
               </li>
               <li>
                 <a
                   class="footer__link text-decoration-none d-inline-block text-gray py-1"
-                  href="track-order.html"
+                  href="index.php?page=track-order"
                   >تتبع طلبك</a
                 >
               </li>

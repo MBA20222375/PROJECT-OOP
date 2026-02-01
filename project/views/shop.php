@@ -52,7 +52,7 @@
               </button>
             </div>
             <div class="nav__logo">
-              <a href="index.html">
+              <a href="index.php?page=home">
                 <img class="h-100" src="assets/images/logo.png" alt="" />
               </a>
             </div>
@@ -78,7 +78,7 @@
                 <li class="nav__link nav__user-link"><a href="index.php?page=orders">الطلبات</a></li>
                 <li class="nav__link nav__user-link"><a href="index.php?page=account_details">تفاصيل الحساب</a></li>
                 <li class="nav__link nav__user-link"><a href="index.php?page=favourites">المفضلة</a></li>
-                <li class="nav__link nav__user-link"><a href="">تسجيل الخروج</a></li>
+                <li class="nav__link nav__user-link"><a href="index.php?page=logout">تسجيل الخروج</a></li>
               </ul>
             </li>
               <li class="nav__link">
@@ -358,6 +358,612 @@
               <div class="product__title text-center">
                 <a
                   class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  Flutter Apprentice
+                </a>
+              </div>
+              <div class="product__author text-center">Mike Katz</div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  550.00 جنيه
+                </span>
+                <span class="product__price"> 350.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-2.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  Modern Full-Stack Development
+                </a>
+              </div>
+              <div class="product__author text-center">Frank Zammetti</div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  450.00 جنيه
+                </span>
+                <span class="product__price"> 250.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-3.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  C# 10 in a Nutshell
+                </a>
+              </div>
+              <div class="product__author text-center">Joseph Albahari</div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  650.00 جنيه
+                </span>
+                <span class="product__price"> 450.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-4.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  Algorithms عربي
+                </a>
+              </div>
+              <div class="product__author text-center">Aditya Y. Bhargava</div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  359.00 جنيه
+                </span>
+                <span class="product__price"> 249.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-5.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  Head-First Design Patterns
+                </a>
+              </div>
+              <div class="product__author text-center">
+                Eric Freeman & Elisabeth Robson
+              </div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  550.00 جنيه
+                </span>
+                <span class="product__price"> 350.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-1.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="single-product.html"
+                >
+                  Flutter Apprentice
+                </a>
+              </div>
+              <div class="product__author text-center">Mike Katz</div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  550.00 جنيه
+                </span>
+                <span class="product__price"> 350.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-2.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  Modern Full-Stack Development
+                </a>
+              </div>
+              <div class="product__author text-center">Frank Zammetti</div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  450.00 جنيه
+                </span>
+                <span class="product__price"> 250.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-3.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  C# 10 in a Nutshell
+                </a>
+              </div>
+              <div class="product__author text-center">Joseph Albahari</div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  650.00 جنيه
+                </span>
+                <span class="product__price"> 450.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-4.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  Algorithms عربي
+                </a>
+              </div>
+              <div class="product__author text-center">Aditya Y. Bhargava</div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  359.00 جنيه
+                </span>
+                <span class="product__price"> 249.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-5.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  Head-First Design Patterns
+                </a>
+              </div>
+              <div class="product__author text-center">
+                Eric Freeman & Elisabeth Robson
+              </div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  550.00 جنيه
+                </span>
+                <span class="product__price"> 350.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-1.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  Flutter Apprentice
+                </a>
+              </div>
+              <div class="product__author text-center">Mike Katz</div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  550.00 جنيه
+                </span>
+                <span class="product__price"> 350.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-2.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  Modern Full-Stack Development
+                </a>
+              </div>
+              <div class="product__author text-center">Frank Zammetti</div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  450.00 جنيه
+                </span>
+                <span class="product__price"> 250.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-3.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  C# 10 in a Nutshell
+                </a>
+              </div>
+              <div class="product__author text-center">Joseph Albahari</div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  650.00 جنيه
+                </span>
+                <span class="product__price"> 450.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-4.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  Algorithms عربي
+                </a>
+              </div>
+              <div class="product__author text-center">Aditya Y. Bhargava</div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  359.00 جنيه
+                </span>
+                <span class="product__price"> 249.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-5.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
+                  href="index.php?page=single-product"
+                >
+                  Head-First Design Patterns
+                </a>
+              </div>
+              <div class="product__author text-center">
+                Eric Freeman & Elisabeth Robson
+              </div>
+              <div
+                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
+              >
+                <span class="product__price product__price--old">
+                  550.00 جنيه
+                </span>
+                <span class="product__price"> 350.00 جنيه </span>
+              </div>
+            </div>
+            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
+              <div class="product__header mb-3">
+                <a href="index.php?page=single-product">
+                  <div class="product__img-cont">
+                    <img
+                      class="product__img w-100 h-100 object-fit-cover"
+                      src="assets/images/product-1.webp"
+                      data-id="white"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
+                >
+                  وفر 10%
+                </div>
+                <div
+                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
+                >
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+              <div class="product__title text-center">
+                <a
+                  class="text-black text-decoration-none"
                   href="single-product.html"
                 >
                   Flutter Apprentice
@@ -600,209 +1206,7 @@
               <div class="product__title text-center">
                 <a
                   class="text-black text-decoration-none"
-                  href="single-product.html"
-                >
-                  Modern Full-Stack Development
-                </a>
-              </div>
-              <div class="product__author text-center">Frank Zammetti</div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  450.00 جنيه
-                </span>
-                <span class="product__price"> 250.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="index.php?page=single-product">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-3.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="single-product.html"
-                >
-                  C# 10 in a Nutshell
-                </a>
-              </div>
-              <div class="product__author text-center">Joseph Albahari</div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  650.00 جنيه
-                </span>
-                <span class="product__price"> 450.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="index.php?page=single-product">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-4.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
                   href="index.php?page=single-product"
-                >
-                  Algorithms عربي
-                </a>
-              </div>
-              <div class="product__author text-center">Aditya Y. Bhargava</div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  359.00 جنيه
-                </span>
-                <span class="product__price"> 249.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="index.php?page=single-product">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-5.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="index.php?page=single-product"
-                >
-                  Head-First Design Patterns
-                </a>
-              </div>
-              <div class="product__author text-center">
-                Eric Freeman & Elisabeth Robson
-              </div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  550.00 جنيه
-                </span>
-                <span class="product__price"> 350.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="index.php?page=single-product">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-1.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="index.php?page=single-product"
-                >
-                  Flutter Apprentice
-                </a>
-              </div>
-              <div class="product__author text-center">Mike Katz</div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  550.00 جنيه
-                </span>
-                <span class="product__price"> 350.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="index.php?page=single-product">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-2.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="single-product.html"
                 >
                   Modern Full-Stack Development
                 </a>
@@ -883,410 +1287,6 @@
                 <a
                   class="text-black text-decoration-none"
                   href="index.php?page=single-product"
-                >
-                  Algorithms عربي
-                </a>
-              </div>
-              <div class="product__author text-center">Aditya Y. Bhargava</div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  359.00 جنيه
-                </span>
-                <span class="product__price"> 249.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="single-product.html">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-5.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="index.php?page=single-product"
-                >
-                  Head-First Design Patterns
-                </a>
-              </div>
-              <div class="product__author text-center">
-                Eric Freeman & Elisabeth Robson
-              </div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  550.00 جنيه
-                </span>
-                <span class="product__price"> 350.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="index.php?page=single-product">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-1.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="single-product.html"
-                >
-                  Flutter Apprentice
-                </a>
-              </div>
-              <div class="product__author text-center">Mike Katz</div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  550.00 جنيه
-                </span>
-                <span class="product__price"> 350.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="index.php?page=single-product">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-2.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="single-product.html"
-                >
-                  Modern Full-Stack Development
-                </a>
-              </div>
-              <div class="product__author text-center">Frank Zammetti</div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  450.00 جنيه
-                </span>
-                <span class="product__price"> 250.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="index.php?page=single-product">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-3.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="index.php?page=single-product"
-                >
-                  C# 10 in a Nutshell
-                </a>
-              </div>
-              <div class="product__author text-center">Joseph Albahari</div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  650.00 جنيه
-                </span>
-                <span class="product__price"> 450.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="index.php?page=single-product">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-4.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="single-product.html"
-                >
-                  Algorithms عربي
-                </a>
-              </div>
-              <div class="product__author text-center">Aditya Y. Bhargava</div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  359.00 جنيه
-                </span>
-                <span class="product__price"> 249.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="index.php?page=single-product">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-5.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="index.php?page=single-product"
-                >
-                  Head-First Design Patterns
-                </a>
-              </div>
-              <div class="product__author text-center">
-                Eric Freeman & Elisabeth Robson
-              </div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  550.00 جنيه
-                </span>
-                <span class="product__price"> 350.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="index.php?page=single-product">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-1.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="single-product.html"
-                >
-                  Flutter Apprentice
-                </a>
-              </div>
-              <div class="product__author text-center">Mike Katz</div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  550.00 جنيه
-                </span>
-                <span class="product__price"> 350.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="index.php?page=single-product">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-2.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="index.php?page=single-product"
-                >
-                  Modern Full-Stack Development
-                </a>
-              </div>
-              <div class="product__author text-center">Frank Zammetti</div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  450.00 جنيه
-                </span>
-                <span class="product__price"> 250.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="single-product.html">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-3.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="single-product.html"
-                >
-                  C# 10 in a Nutshell
-                </a>
-              </div>
-              <div class="product__author text-center">Joseph Albahari</div>
-              <div
-                class="product__price text-center d-flex gap-2 justify-content-center flex-wrap"
-              >
-                <span class="product__price product__price--old">
-                  650.00 جنيه
-                </span>
-                <span class="product__price"> 450.00 جنيه </span>
-              </div>
-            </div>
-            <div class="products__item col-6 col-md-4 col-lg-3 mb-5">
-              <div class="product__header mb-3">
-                <a href="index.php?page=single-product">
-                  <div class="product__img-cont">
-                    <img
-                      class="product__img w-100 h-100 object-fit-cover"
-                      src="assets/images/product-4.webp"
-                      data-id="white"
-                    />
-                  </div>
-                </a>
-                <div
-                  class="product__sale position-absolute top-0 start-0 m-1 px-2 py-1 rounded-1 text-white"
-                >
-                  وفر 10%
-                </div>
-                <div
-                  class="product__favourite position-absolute top-0 end-0 m-1 rounded-circle d-flex justify-content-center align-items-center bg-white"
-                >
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-              <div class="product__title text-center">
-                <a
-                  class="text-black text-decoration-none"
-                  href="single-product.html"
                 >
                   Algorithms عربي
                 </a>
