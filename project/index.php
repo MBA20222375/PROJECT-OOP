@@ -1,7 +1,11 @@
 <?php
-require_once "./views/layauts/header.php";
-require_once __DIR__."/vendor/autoload.php";
-$config = require __DIR__."/config.php";
+require_once "core/functions.php";
+require_once "core/validations.php";
+require_once "config.php";
+require_once "views/layauts/header.php";
+require_once "vendor/autoload.php";
+
+
 use Projeats\ProjectOop\Database;
 use Projeats\ProjectOop\Prodaut;
 
@@ -60,6 +64,9 @@ switch ($page) {
         break;
     case "track_order":
         require "views/track-order.php";
+        break;
+    case "account-control":
+        require "App/controllers/AccountController.php";
         break;
     default:
         require "views/home.php";

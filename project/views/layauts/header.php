@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="icon" href="./assets/images/logo.png" type="image/x-icon"/>
+  <link rel="icon" href="./assets/images/logo.png" type="image/x-icon" />
   <link rel="stylesheet" href="assets/css/vendors/all.min.css">
   <link rel="stylesheet" href="assets/css/vendors/bootstrap.rtl.min.css">
   <link rel="stylesheet" href="assets/css/vendors/owl.carousel.min.css">
@@ -29,7 +29,7 @@
           <div class="header__branches d-flex gap-2 align-items-center">
             <a class="text-white text-decoration-none" href="index.php?page=branches">
               <i class="fa-solid fa-location-dot"></i>
-              فروعنا  
+              فروعنا
             </a>
           </div>
         </div>
@@ -103,8 +103,8 @@
               </a>
             </li>
 
-            <li class="nav-mobile__link d-flex align-items-center flex-column gap-1" 
-                data-bs-toggle="offcanvas" data-bs-target="#nav__categories">
+            <li class="nav-mobile__link d-flex align-items-center flex-column gap-1" data-bs-toggle="offcanvas"
+              data-bs-target="#nav__categories">
               <i class="fa-solid fa-align-center fa-rotate-180"></i>
               الاقسام
             </li>
@@ -112,14 +112,15 @@
             <li class="nav-mobile__link">
               <a class="d-flex align-items-center flex-column gap-1 text-decoration-none" href="index.php?page=profile">
                 <i class="fa-regular fa-user"></i>
-                حسابي 
+                حسابي
               </a>
             </li>
 
             <li class="nav-mobile__link">
-              <a class="d-flex align-items-center flex-column gap-1 text-decoration-none" href="index.php?page=favourites">
+              <a class="d-flex align-items-center flex-column gap-1 text-decoration-none"
+                href="index.php?page=favourites">
                 <i class="fa-regular fa-heart"></i>
-                المفضلة 
+                المفضلة
               </a>
             </li>
 
@@ -158,6 +159,6 @@
     <section class="sales text-center p-2 d-block d-lg-none">
       شحن مجاني للطلبات 💥 عند الشراء ب 699ج او اكثر
     </section>
-
   </div>
+
   <!-- Header Content End -->
