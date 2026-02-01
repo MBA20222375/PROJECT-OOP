@@ -15,7 +15,7 @@ class Database
             $dns = "mysql:host={$config['host']};dbname={$config['dbname']};charset=utf8mb4";
             $this->connection = new PDO($dns, $config['username'], $config['password']);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (\PDOException $e) {
+        } catch (PDOException $e) {
             die($e->getMessage());
         }
     }

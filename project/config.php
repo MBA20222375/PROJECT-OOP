@@ -1,9 +1,9 @@
 <?php
 
 
-return[
+$config = [
    "host" => "localhost",
-   "dbname" => "projuct_oop",
+   "dbname" => "bookstore",
    "username" => "root",
    "password" => ""
 ];
