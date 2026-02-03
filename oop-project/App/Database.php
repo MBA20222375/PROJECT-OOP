@@ -1,6 +1,6 @@
 <?php
 
-namespace Oop\Project;;
+namespace Oop\Project;
 
 use PDO;
 use PDOException;

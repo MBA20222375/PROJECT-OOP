@@ -1,7 +1,6 @@
 <?php
 
     use Oop\Project\User;
-    use PDO;
 
     class AccountController{
         public static function handle(PDO $pdo): void{
@@ -28,21 +27,26 @@
                     }
 
                 case "login":
+
                     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-                        $email = trim(htmlspecialchars(htmlentities($_POST('email'))));
-                        $password = trim(htmlspecialchars(htmlentities($_POST('password'))));
+                        
+                        $email = trim(string: htmlspecialchars(htmlentities($_POST['email'])));
+                        $password = trim(htmlspecialchars(htmlentities($_POST['password'])));
 
                         $user = User::login($pdo, $email, $password);
-
+                        // echo var_dump($user);
+                        // die();
                         if($user !== null){
                             set_messages([['content' => "login success!", 'type'=> 'success']]);
+                            // echo "Logined";
+                            // die();
                             header("Location: index.php?page=profile");
                             die();
                         }
                     }
                     break;
             }
-            set_messages([['content' => "login Failed!", 'type'=> 'danger']]);
+            set_messages([['content' => "Something Wrong happened!", 'type'=> 'danger']]);
             header("Location: index.php?page=account");
             die();
         }

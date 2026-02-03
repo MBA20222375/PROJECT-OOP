@@ -28,6 +28,8 @@
                     return null;
                 }
 
+                $password = password_hash($password, PASSWORD_DEFAULT);
+
                 $stmt = $pdo->prepare("INSERT INTO users(name, email, password, role) Values (?, ?, ?, ?) ;");      
                 $success = $stmt->execute([$name, $email, $password, $role]);
                 $id = $pdo->lastInsertId();
@@ -42,9 +44,11 @@
             public static function login(PDO $pdo, string $email, string $password): User|null{
                 $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? ;");
                 $success = $stmt->execute([$email]);
+                
 
                 if($success){
                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
                     if(password_verify($password, $row['password'])){
 
                         if(session_status() === PHP_SESSION_NONE){

@@ -1,6 +1,6 @@
 <?php
 
-ob_start();
+// ob_start();
 
 require_once "vendor/autoload.php";
 require_once "App/core/functions.php";
@@ -11,6 +11,8 @@ require_once "App/views/layouts/header.php";
 
 use Oop\Project\Database;
 use Oop\Project\Product;
+use Oop\Project\Order;
+
 
 $db = Database::getInstance($config)->getConnection();
 
@@ -19,7 +21,19 @@ switch ($page) {
     case "home":
         require "App/views/home.php";
         break;
-    case "register":
+        case "search":
+        require "App/controllers/SearchController.php";
+        break;
+    case "create-product":
+        require "App/views/Products/create.php";
+        break;
+    case "store-product":
+        require "App/controllers/ProductController.php";
+        break;
+     case "contact-store":
+        require "App/controllers/contact-store.php";
+        break;
+    case "account":
         require "App/views/auth/account.php";
         break;
     case "shop":
@@ -38,6 +52,7 @@ switch ($page) {
         require "App/views/profile.php";
         break;
     case "orders":
+        require "App/controllers/OrderController.php";
         require "App/views/orders.php";
         break;
     case "account_details":
@@ -50,9 +65,11 @@ switch ($page) {
         require "App/views/checkout.php";
         break;
     case "order_details":
+        require "App/controllers/OrderController.php";
         require "App/views/order-details.php";
         break;
     case "order_recieved":
+        require "App/controllers/OrderController.php";
         require "App/views/order-recieved.php";
         break;
     case "privacy_policy":
@@ -69,6 +86,9 @@ switch ($page) {
         break;
     case "account-control":
         require "App/controllers/AccountController.php";
+        break;
+            case "logout":
+        require "App/controllers/LogoutController.php";
         break;
     default:
         require "App/views/home.php";

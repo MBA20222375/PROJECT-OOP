@@ -3,7 +3,7 @@
 
 
 SESSION_destroy();
-header("Location: index.php?page=login");
+header("Location: index.php?page=home");
 
 ?>
  

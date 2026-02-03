@@ -48,7 +48,7 @@
     }
 
 
-    function validate_register(PDO $pdo, string $name, string $email, string $password): string|null{
+    function validate_register(PDO $pdo, string $name, string $email, string $password):?string{
         $fields = [
             "name"=> $name,
             "email"=> $email,

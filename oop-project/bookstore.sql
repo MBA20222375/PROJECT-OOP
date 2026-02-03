@@ -101,3 +101,25 @@ CREATE TABLE IF NOT EXISTS order_items (
     FOREIGN KEY (book_id) REFERENCES books(id)
 );
 
+CREATE TABLE products (
+  id int(11) PRIMARY KEY AUTO_INCREMENT,
+  name varchar(255) NOT NULL,
+  price decimal(8,2) NOT NULL,
+  image varchar(255) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS contact_messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    reason ENUM(
+        'استفسار',
+        'استبدال',
+        'استرجاع',
+        'استعجال اوردر',
+        'اخري'
+    ) NOT NULL,
+    message TEXT NOT NULL,
+    status ENUM('جديد', 'تم الرد', 'مغلق') DEFAULT 'جديد',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

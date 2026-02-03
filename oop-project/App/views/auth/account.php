@@ -23,16 +23,16 @@
         </div>
       </div>
       <div class="account__login w-100">
-        <form class="mb-5">
+        <form class="mb-5" method="POST" action="index.php?page=account-control&action=login">
           <div class="input-group rounded-1 mb-3">
-            <input type="text" class="form-control p-3" placeholder="البريد الالكتروني" aria-label="Email"
+            <input type="text" class="form-control p-3" name="email" placeholder="البريد الالكتروني" aria-label="Email"
               aria-describedby="basic-addon1" />
             <span class="input-group-text login__input-icon" id="basic-addon1">
               <i class="fa-solid fa-envelope"></i>
             </span>
           </div>
           <div class="input-group rounded-1 mb-3">
-            <input type="password" class="form-control p-3" placeholder="كلمة السر" aria-label="Password"
+            <input type="password" class="form-control p-3" name="password" placeholder="كلمة السر" aria-label="Password"
               aria-describedby="basic-addon1" />
             <span class="input-group-text login__input-icon" id="basic-addon1">
               <i class="fa-solid fa-key"></i>
