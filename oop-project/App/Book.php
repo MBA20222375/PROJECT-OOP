@@ -177,4 +177,40 @@ class Book
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function update(
+        PDO $pdo,
+        int $id,
+        string $name,
+        int $page_count,
+        float $price,
+        float $discount,
+        ?string $description,
+        $image = null
+    ): bool {
+        $imageName = null;
+
+        if ($image && is_array($image) && $image['error'] === UPLOAD_ERR_OK) {
+            $imageName = self::uploadFile($image, 'books');
+            $stmt = $pdo->prepare("
+                UPDATE books 
+                SET name = ?, page_count = ?, price = ?, discount = ?, description = ?, image = ?
+                WHERE id = ?
+            ");
+            return $stmt->execute([$name, $page_count, $price, $discount, $description, $imageName, $id]);
+        } else {
+            $stmt = $pdo->prepare("
+                UPDATE books 
+                SET name = ?, page_count = ?, price = ?, discount = ?, description = ?
+                WHERE id = ?
+            ");
+            return $stmt->execute([$name, $page_count, $price, $discount, $description, $id]);
+        }
+    }
+
+    public static function delete(PDO $pdo, int $id): bool
+    {
+        $stmt = $pdo->prepare("DELETE FROM books WHERE id = ?");
+        return $stmt->execute([$id]);
+    }
 }

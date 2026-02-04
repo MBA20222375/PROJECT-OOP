@@ -27,7 +27,19 @@ switch ($page) {
     case "create-product":
         require "App/views/Products/create.php";
         break;
+    case "products-index":
+        require "App/views/Products/index.php";
+        break;
+    case "edit-product":
+        require "App/views/Products/edit.php";
+        break;
     case "store-product":
+        require "App/controllers/ProductController.php";
+        break;
+    case "update-product":
+        require "App/controllers/ProductController.php";
+        break;
+    case "delete-product":
         require "App/controllers/ProductController.php";
         break;
      case "contact-store":
