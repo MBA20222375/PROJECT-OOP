@@ -36,6 +36,20 @@
               <label>Description</label>
             </div>
 
+            <div class="mb-3">
+              <label for="reason"> نوع الكتاب <span class="required">*</span></label>
+              <select class="contact__input" id="reason" name="category" required>
+                <option value="">- اضغط هنا اختيار نوع الكتاب -</option>
+                <option value="اللغة العربية">كتاب بالغة العربيه</option>
+                <option value="اللغة الانجليزيه">كتاب بالغة الانجليزيه</option>
+              </select>
+            </div>
+            <!-- Author -->
+             <div class="form-floating mb-3">
+              <input class="form-control" name="author" type="text" />
+              <label>Author</label>
+            </div>
+
             <!-- image -->
             <div class="form-floating mb-3">
               <input class="form-control" name="image" type="file" />

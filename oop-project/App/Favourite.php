@@ -2,24 +2,27 @@
 
     namespace Oop\Project;
 
-    use PDO;
+use DateTime;
+use PDO;
 
     class Favourite{
             private int $user_id;
             private int $book_id;
+            private DateTime $created_at;
             
-            public function __construct(int $user_id, int $book_id)
+            public function __construct(int $user_id, int $book_id, DateTime $created_at)
             {
                 $this->user_id = $user_id;
                 $this->book_id = $book_id;
+                $this->created_at = $created_at;
             }
 
-            public static function add(PDO $pdo, int $user_id, int $book_id): Favourite|null{
+            public static function add(PDO $pdo, int $user_id, int $book_id, DateTime $created_at = new DateTime()): Favourite|null{
                 $stmt = $pdo->prepare("INSERT INTO favourites(user_id, book_id) Values (?, ?) ;");      
                 $success = $stmt->execute([$user_id, $book_id]);
             
                 if($success){
-                    return new Favourite($user_id, $book_id);
+                    return new Favourite($user_id, $book_id, $created_at);
                 }
 
                 return null;

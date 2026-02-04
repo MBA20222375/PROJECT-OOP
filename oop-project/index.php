@@ -21,6 +21,12 @@ switch ($page) {
     case "home":
         require "App/views/home.php";
         break;
+    case "favourites":
+        require "App/views/favourites.php";
+        break;
+    case "favourite-control":
+    require "App/controllers/FavouriteController.php";
+    break;
     case "search":
         require "App/controllers/SearchController.php";
         break;
@@ -56,9 +62,6 @@ switch ($page) {
         break;
     case "account_details":
         require "App/views/account_details.php";
-        break;
-    case "favourites":
-        require "App/views/favourites.php";
         break;
     case "checkout":
         require "App/views/checkout.php";

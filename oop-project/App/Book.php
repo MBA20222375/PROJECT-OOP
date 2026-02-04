@@ -18,6 +18,7 @@ class Book
     private ?string $image;
     private ?string $description;
     private DateTime $created_at;
+    private string $category;
 
     public function __construct(
         int $id,
@@ -25,9 +26,10 @@ class Book
         int $page_count,
         float $price,
         DateTime $created_at,
+        string $category,
         float $discount = 0,
         ?string $image = null,
-        ?string $description = null,
+        ?string $description = null
     ) {
         $this->id = $id;
         $this->name = $name;
@@ -37,6 +39,7 @@ class Book
         $this->image = $image;
         $this->description = $description;
         $this->created_at = $created_at;
+        $this->category = $category;
     }
 
     /* ================= Getters ================= */
@@ -46,11 +49,13 @@ class Book
         return $this->id;
     }
 
-    public function getCreatedAt(): DateTime{
+    public function getCreatedAt(): DateTime
+    {
         return $this->created_at;
     }
 
-    public function isRecent(): bool{
+    public function isRecent(): bool
+    {
         return $this->created_at->diff(new DateTime())->days < 7;
     }
 
@@ -74,8 +79,9 @@ class Book
         return $this->discount;
     }
 
-    public function getPriceAfterDiscount(): float{
-        return $this->price - ($this->price * $this->discount/100);
+    public function getPriceAfterDiscount(): float
+    {
+        return $this->price - ($this->price * $this->discount / 100);
     }
 
     public function getImage(): ?string
@@ -88,7 +94,7 @@ class Book
         return $this->description;
     }
 
-    /* ================= CRUD ================= */
+    /* ================= CREATE ================= */
 
     public static function create(
         PDO $pdo,
@@ -97,18 +103,18 @@ class Book
         float $price,
         float $discount,
         ?string $description,
-        $image,
-        $created_at
+        string $image,
+        string $category
     ): ?Book {
-        $imageName = null;
 
+        $imageName = null;
         if ($image && is_array($image)) {
             $imageName = self::uploadFile($image, 'books');
         }
 
         $stmt = $pdo->prepare("
-            INSERT INTO books (name, page_count, price, discount, description, image)
-            VALUES (?, ?, ?, ?, ?, ?)
+            INSERT INTO books (name, page_count, price, discount, description, image, category)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
         ");
 
         $success = $stmt->execute([
@@ -118,38 +124,90 @@ class Book
             $discount,
             $description,
             $imageName,
+            $category
         ]);
 
-        if ($success) {
-            return new self(
-                (int)$pdo->lastInsertId(),
-                $name,
-                $page_count,
-                $price,
-                $created_at,
-                $discount,
-                $imageName,
-                $description,
-            );
+        if (!$success) {
+            return null;
         }
 
-        return null;
+        return new self(
+            (int) $pdo->lastInsertId(),
+            $name,
+            $page_count,
+            $price,
+            new DateTime(),
+            $category,
+            $discount,
+            $imageName,
+            $description,
+        );
     }
 
+    /* ========== CREATE WITH RELATIONS ========== */
+
+    public static function createWithRelations(
+        PDO $pdo,
+        string $name,
+        int $page_count,
+        float $price,
+        float $discount,
+        ?string $description,
+        string $image,
+        string $authorName,
+        string $category,
+        // array $tagIds = []
+    ): ?Book {
+
+        $book = self::create(
+            $pdo,
+            $name,
+            $page_count,
+            $price,
+            $category,
+            $discount,
+            $description,
+            $image,
+        );
+
+        if (!$book) {
+            return null;
+        }
+
+        $bookId = $book->getId();
+
+        $author = Author::find($pdo, $authorName);
+        if (!null) {
+            $author = Author::create($pdo, $authorName);
+        }
+
+        self::setAuthorsBooks($pdo, $author->getId(), $bookId);
+
+        // foreach ($tagIds as $tagId) {
+        //     $pdo->prepare("
+        //         INSERT INTO books_tags (book_id, tag_id)
+        //         VALUES (?, ?)
+        //     ")->execute([$bookId, $tagId]);
+        // }
+
+        return $book;
+    }
     public static function getAll(PDO $pdo): array
     {
-        $stmt = $pdo->query("SELECT * FROM books");
+        $stmt = $pdo->query("SELECT * FROM books ORDER BY created_at DESC");
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $books = [];
+
         foreach ($rows as $row) {
             $books[] = new self(
-                $row['id'],
+                (int) $row['id'],
                 $row['name'],
-                $row['page_count'],
-                (float)$row['price'],
+                (int) $row['page_count'],
+                (float) $row['price'],
                 new DateTime($row['created_at']),
-                (float)$row['discount'],
+                $row['category'],
+                (float) $row['discount'],
                 $row['image'],
                 $row['description'],
             );
@@ -158,30 +216,71 @@ class Book
         return $books;
     }
 
-    public static function findById(PDO $pdo, int $id): ?Book
+    public static function getProductByID(PDO $pdo, int $id): Book|null
     {
-        $stmt = $pdo->prepare("SELECT * FROM books WHERE id = ?");
-        $stmt->execute([$id]);
+        $stmt = $pdo->prepare("SELECT * FROM books WHERE id = ? LIMIT = 1");
+        if (!$stmt) {
+            return null;
+        }
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$row) {
+            return null;
+        }
 
-        if ($row) {
-            return new self(
-                $row['id'],
+        $book = new self(
+            (int) $row['id'],
+            $row['name'],
+            (int) $row['page_count'],
+            (float) $row['price'],
+            new DateTime($row['created_at']),
+            $row['category'],
+            (float) $row['discount'],
+            $row['image'],
+            $row['description'],
+        );
+
+        return $book;
+    }
+
+
+    public static function getFavouriteBooks(PDO $pdo, int $userId): array|null
+    {
+        $stmt = $stmt = $pdo->prepare(
+            "SELECT b.*
+                FROM favourites f
+                JOIN books b ON b.id = f.book_id
+                WHERE f.user_id = ?"
+        );
+        if (!$stmt) {
+            return null;
+        }
+        $stmt->execute([$userId]);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (!$rows) {
+            return null;
+        }
+
+        $books = [];
+        foreach ($rows as $row) {
+            $books[] = new self(
+                (int) $row['id'],
                 $row['name'],
-                $row['page_count'],
-                (float)$row['price'],
+                (int) $row['page_count'],
+                (float) $row['price'],
                 new DateTime($row['created_at']),
-                (float)$row['discount'],
+                $row['category'],
+                (float) $row['discount'],
                 $row['image'],
                 $row['description'],
             );
         }
 
-        return null;
+        return $books;
     }
 
-    // SEARCH  FUNCTION
+
+    /* ================= SEARCH ================= */
 
     public static function search(PDO $pdo, string $keyword): array
     {
@@ -195,6 +294,90 @@ class Book
             ':q' => '%' . $keyword . '%'
         ]);
 
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $books = [];
+        foreach ($rows as $row) {
+            $books[] = new self(
+                $row['id'],
+                $row['name'],
+                $row['page_count'],
+                (float) $row['price'],
+                new DateTime($row['created_at']),
+                $row['category'],
+                (float) $row['discount'],
+                $row['image'],
+                $row['description'],
+            );
+        }
+
+        return $books;
+    }
+
+
+    public function getAuthors(PDO $pdo): array
+    {
+        $stmt = $pdo->prepare("
+            SELECT a.*
+            FROM authors a
+            JOIN books_authors ba ON a.id = ba.author_id
+            WHERE ba.book_id = ?
+        ");
+        $stmt->execute([$this->id]);
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function setAuthorsBooks(PDO $pdo, $authorId, $bookId): int|null
+    {
+        $stmt = $pdo->prepare("INSERT INTO books_authors(book_id, author_id) values(?, ?);");
+
+        if (!$stmt->execute([$bookId, $authorId])) {
+            return null;
+        }
+
+        return $pdo->lastInsertId();
+    }
+
+    public function getTags(PDO $pdo): array
+    {
+        $stmt = $pdo->prepare("
+            SELECT t.*
+            FROM tags t
+            JOIN books_tags bt ON t.id = bt.tag_id
+            WHERE bt.book_id = ?
+        ");
+        $stmt->execute([$this->id]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public static function find(PDO $pdo, int $id): ?Book
+    {
+        $stmt = $pdo->prepare("SELECT * FROM books WHERE id = ?");
+        $stmt->execute([$id]);
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return null;
+        }
+
+        return new self(
+            (int) $row['id'],
+            $row['name'],
+            (int) $row['page_count'],
+            (float) $row['price'],
+            new DateTime($row['created_at']),
+            $row['category'],
+            (float) $row['discount'],
+            $row['image'],
+            $row['description'],
+        );
+    }
+
+
+
+
+
+
 }

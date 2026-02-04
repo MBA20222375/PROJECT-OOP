@@ -29,9 +29,14 @@ CREATE TABLE IF NOT EXISTS books (
     price DECIMAL(8,2) NOT NULL,
     discount DECIMAL(8,2) DEFAULT 0,
     description TEXT,
+    reason ENUM(
+        'كتاب بالغه العربيه',
+        'كتاب بالغه الانجليزيه'
+    ) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
 
 CREATE TABLE IF NOT EXISTS books_authors (
     book_id INT NOT NULL,
@@ -101,12 +106,6 @@ CREATE TABLE IF NOT EXISTS order_items (
     FOREIGN KEY (book_id) REFERENCES books(id)
 );
 
-CREATE TABLE products (
-  id int(11) PRIMARY KEY AUTO_INCREMENT,
-  name varchar(255) NOT NULL,
-  price decimal(8,2) NOT NULL,
-  image varchar(255) NOT NULL
-);
 CREATE TABLE IF NOT EXISTS contact (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(150) NOT NULL,

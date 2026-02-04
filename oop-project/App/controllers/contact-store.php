@@ -29,7 +29,7 @@ class ContactController {
         );
 
         set_messages([
-            ['content' => 'success snet message', 'type' => 'success']
+            ['content' => 'message sent successfuly', 'type' => 'success']
         ]);
 
         header("Location: index.php?page=contact");
