@@ -2,44 +2,56 @@
   <!-- Product details Start -->
   <section class="section-container my-5 pt-5 d-md-flex gap-5">
     <div class="single-product__img w-100" id="main-img">
-      <img src="App/assets/images/product-2.webp" alt="">
+      <?php if ($book->getImage()): ?>
+        <img src="public/uploads/books/<?php echo htmlspecialchars($book->getImage()); ?>" 
+             alt="<?php echo htmlspecialchars($book->getName()); ?>">
+      <?php else: ?>
+        <img src="App/assets/images/product-2.webp" alt="<?php echo htmlspecialchars($book->getName()); ?>">
+      <?php endif; ?>
     </div>
     <div class="single-product__details w-100 d-flex flex-column justify-content-between">
       <div>
-        <h4>Modern Full-Stack Development</h4>
-        <div class="product__author">Frank Zammetti</div>
-        <div class="product__author">373 صفحة</div>
+        <h4><?php echo htmlspecialchars($book->getName()); ?></h4>
+        <div class="product__author"><?php echo htmlspecialchars($book->getDescription() ?: 'Unknown Author'); ?></div>
+        <div class="product__author"><?php echo $book->getPageCount(); ?> صفحة</div>
         <div class="product__price mb-3 text-center d-flex gap-2">
-          <span class="product__price product__price--old fs-6 ">
-            450.00 جنيه
-          </span>
-          <span class="product__price fs-5">
-            250.00 جنيه
-          </span>
+          <?php if ($book->getDiscount() > 0): ?>
+            <span class="product__price product__price--old fs-6">
+              $<?php echo number_format($book->getPrice(), 2); ?>
+            </span>
+            <span class="product__price fs-5">
+              $<?php echo number_format($book->getDiscount(), 2); ?>
+            </span>
+          <?php else: ?>
+            <span class="product__price fs-5">
+              $<?php echo number_format($book->getPrice(), 2); ?>
+            </span>
+          <?php endif; ?>
         </div>
-        <div class="d-flex w-100 gap-2 mb-3">
+        <form method="post" action="index.php?page=cart" class="d-flex w-100 gap-2 mb-3">
+          <input type="hidden" name="action" value="add_to_cart">
+          <input type="hidden" name="product_id" value="<?php echo $book->getId(); ?>">
           <div class="single-product__quanitity position-relative">
-            <input class="single-product__input text-center px-3" type="number" value="1" placeholder="---">
+            <input class="single-product__input text-center px-3" type="number" name="quantity" value="1" min="1" max="99" placeholder="---">
             <button
-              class="single-product__increase border-0 bg-transparent position-absolute end-0 h-100 px-3">+</button>
+              class="single-product__increase border-0 bg-transparent position-absolute end-0 h-100 px-3" type="button">+</button>
             <button
-              class="single-product__decrease border-0 bg-transparent position-absolute start-0 h-100 px-3">-</button>
+              class="single-product__decrease border-0 bg-transparent position-absolute start-0 h-100 px-3" type="button">-</button>
           </div>
-          <button class="single-product__add-to-cart primary-button w-100">اضافه الي السلة</button>
-        </div>
+          <button type="submit" class="single-product__add-to-cart primary-button w-100">اضافه الي السلة</button>
+        </form>
         <div class="single-product__favourite d-flex align-items-center gap-2 mb-4">
           <i class="fa-regular fa-heart"></i>
           اضافة للمفضلة
         </div>
       </div>
       <div class="single-product__categories">
-        <p class="mb-0">رمز المنتج: غير محدد</p>
+        <p class="mb-0">رمز المنتج: #<?php echo $book->getId(); ?></p>
         <div>
-          <span>التصنيفات: </span><a href="index.php?page=shop">new</a>, <a href="index.php?page=shop">احذية</a>, <a
-            href="index.php?page=shop">رجاليه</a>
+          <span>التصنيفات: </span><a href="index.php?page=shop">كتب</a>, <a href="index.php?page=shop">تعليم</a>
         </div>
         <div>
-          <span>الوسوم: </span><a href="index.php?page=shop">pr150</a>, <a href="index.php?page=shop">flotrate</a>
+          <span>الوسوم: </span><a href="index.php?page=shop">book<?php echo $book->getId(); ?></a>, <a href="index.php?page=shop">programming</a>
         </div>
       </div>
     </div>

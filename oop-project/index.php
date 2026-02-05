@@ -42,6 +42,10 @@ switch ($page) {
     case "delete-product":
         require "App/controllers/ProductController.php";
         break;
+    case "cart":
+        require "App/controllers/CartController.php";
+        require "App/views/cart.php";
+        break;
      case "contact-store":
         require "App/controllers/contact-store.php";
         break;
