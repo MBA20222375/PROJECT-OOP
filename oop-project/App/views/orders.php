@@ -40,7 +40,15 @@
     </div>
     <div class="profile__left mt-4 mt-md-0 w-100">
       <div class="profile__tab-content orders active">
-        <?php if (empty($userOrders)): ?>
+        <?php
+
+use Oop\Project\Order;
+
+        $order = new Order($db);
+        $userOrders = $order->getUserOrders($_SESSION['user_id']);
+
+        if (empty($userOrders)): 
+        ?>
           <div class="orders__none d-flex justify-content-between align-items-center py-3 px-4">
             <p class="m-0">لم يتم تنفيذ اي طلب بعد.</p>
             <button class="primary-button">تصفح المنتجات</button>
@@ -59,6 +67,7 @@
               $processedOrders = [];
               foreach ($userOrders as $orderItem): 
                 $orderId = $orderItem['id'];
+                $total = Order::getOrderTotal($db, $orderId);
                 if (!isset($processedOrders[$orderId])):
                   $processedOrders[$orderId] = true;
               ?>
@@ -77,7 +86,7 @@
                 </td>
                 <td class="d-flex justify-content-between d-md-table-cell">
                   <div class="fw-bolder d-md-none">الاجمالي:</div>
-                  <div><?php echo $orderItem['total_amount']; ?> جنيه</div>
+                  <div><?php echo $total['total']; ?> جنيه</div>
                 </td>
                 <td class="d-flex justify-content-between d-md-table-cell">
                   <div class="fw-bolder d-md-none">اجراءات:</div>

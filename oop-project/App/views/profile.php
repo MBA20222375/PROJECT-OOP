@@ -1,3 +1,10 @@
+<?php
+
+use Oop\Project\User;
+
+  $user = User::getUserById($db, $_SESSION['user_id']);
+?>
+
 <main>
   <section class="page-top d-flex justify-content-center align-items-center flex-column text-center">
     <div class="page-top__overlay"></div>
@@ -18,7 +25,7 @@
         <div class="profile__user-img rounded-circle overflow-hidden">
           <img class="w-100" src="assets/images/user.png" alt="" />
         </div>
-        <div class="profile__user-name">moamenyt</div>
+        <div class="profile__user-name"><?= $user->getName(); ?></div>
       </div>
       <ul class="profile__tabs list-unstyled ps-3">
         <li class="profile__tab active">
@@ -41,8 +48,8 @@
     <div class="profile__left mt-4 mt-md-0 w-100">
       <div class="profile__tab-content active">
         <p class="mb-5">
-          مرحبا <span class="fw-bolder">moamenyt</span> (لست
-          <span class="fw-bolder">moamenyt</span>?
+          مرحبا <span class="fw-bolder"><?= $user->getName(); ?></span> (لست
+          <span class="fw-bolder"><?= $user->getName(); ?></span>?
           <a class="text-danger" href="index.php?page=logout">تسجيل الخروج</a>)
         </p>
 

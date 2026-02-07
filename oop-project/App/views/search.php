@@ -14,24 +14,25 @@
     <?php else: ?>
         <div class="row">
 
-            <?php foreach ($books as $book): ?>
+            <?php foreach ($books as $book):?>
+                
                 <div class="col-md-3 mb-4">
                     <div class="card h-100">
 
                         <img
-                            src="App/assets/uploads/books/<?= $book['image'] ?>"
+                            src="public/uploads/<?= $book->getImage(); ?>"
                             class="card-img-top"
-                            alt="<?= htmlspecialchars($book['name']) ?>"
+                            alt="<?= $book->getName(); ?>"
                         >
 
                         <div class="card-body">
                             <h6 class="card-title">
-                                <?= htmlspecialchars($book['name']) ?>
+                                <?= $book->getName(); ?>
                             </h6>
 
                             <p class="card-text">
                                 السعر:
-                                <strong><?= $book['price'] ?></strong>
+                                <strong><?= $book->getPrice(); ?></strong>
                             </p>
                         </div>
 

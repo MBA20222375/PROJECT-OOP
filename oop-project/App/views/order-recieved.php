@@ -1,3 +1,25 @@
+<?php
+
+use Oop\Project\Book;
+use Oop\Project\Order;
+
+  if(!isset($_GET['id'])){
+    header("Location: index.php?page=home");
+    die();
+  }
+    $order = Order::getOrderById($db, $_GET['id']);
+    $orderItems = Order::getOrderItemsById($db, $_GET['id']);
+
+    $id = $_GET['id'];
+    $created_at = $order['created_at'];
+    $email = $order['email'];
+    $name = $order['name'];
+    $address = $order['address'];
+    $city = $order['city'];
+    $phone = $order['phone'];
+    $total = 0.0;
+?>
+
 <main>
   <section class="page-top d-flex justify-content-center align-items-center flex-column text-center">
     <div class="page-top__overlay"></div>
@@ -29,19 +51,15 @@
       <div class="d-flex flex-wrap gap-2">
         <div class="success__details">
           <p class="success__small">رقم الطلب:</p>
-          <p class="fw-bolder">79917</p>
+          <p class="fw-bolder"><?= $id; ?></p>
         </div>
         <div class="success__details">
           <p class="success__small">التاريخ:</p>
-          <p class="fw-bolder">يوليو 26, 2023</p>
+          <p class="fw-bolder"><?= $created_at; ?></p>
         </div>
         <div class="success__details">
           <p class="success__small">البريد الإلكتروني:</p>
-          <p class="fw-bolder">moamenyt@gmail.com</p>
-        </div>
-        <div class="success__details">
-          <p class="success__small">الإجمالي:</p>
-          <p class="fw-bolder">389.00 جنيه</p>
+          <p class="fw-bolder"><?= $email; ?></p>
         </div>
       </div>
     </div>
@@ -57,43 +75,30 @@
         </tr>
       </thead>
       <tbody>
+        <?php foreach($orderItems as $orderItem):
+          $book = Book::getProductByID($db, $orderItem['book_id']);
+          $total += $book->getDiscount()===0? $book->getPrice():$book->getPriceAfterDiscount();
+        ?>
         <tr>
           <td>
             <div>
-              <a href="">كوتش فلات ديزارت -رجالى - الابيض, 42</a> x 1
+              <a href="<?php echo "index.php?page=single_product&id={$orderItem['book_id']}"?>"><?= $book->getName(); ?></a> x 1
             </div>
             <div>
-              <span class="fw-bold">اللون:</span>
-              <span>لابيض</span>
-            </div>
-            <div>
-              <span class="fw-bold">المقاس:</span>
-              <span>42</span>
+              <span><?= $book->getDescription(); ?></span>
             </div>
           </td>
-          <td>200.00 جنيه</td>
+          <td><?php echo $book->getDiscount()===0? $book->getPrice():$book->getPriceAfterDiscount(); ?></td>
         </tr>
-        <tr>
-          <td>
-            <div><a href="">كوتش كاجوال -رجالى - بنى, 43</a> x 1</div>
-            <div>
-              <span class="fw-bold">اللون:</span>
-              <span>بني</span>
-            </div>
-            <div>
-              <span class="fw-bold">المقاس:</span>
-              <span>43</span>
-            </div>
-          </td>
-          <td>150.00 جنيه</td>
-        </tr>
+        <?php endforeach;?>
+
         <tr>
           <th>المجموع:</th>
-          <td class="fw-bolder">350.00 جنيه</td>
+          <td class="fw-bolder"><?= $total." جنيه" ?></td>
         </tr>
         <tr>
           <th>الإجمالي:</th>
-          <td class="fw-bold">389.00 جنيه</td>
+          <td class="fw-bold"><?= $total." جنيه" ?></td>
         </tr>
       </tbody>
     </table>
@@ -101,11 +106,11 @@
   <section class="section-container mb-5">
     <h2>عنوان الفاتورة</h2>
     <div class="border p-3 rounded-3">
-      <p class="mb-1">محمد محسن</p>
-      <p class="mb-1">43 الاتحاد</p>
-      <p class="mb-1">القاهرة</p>
-      <p class="mb-1">01020288964</p>
-      <p class="mb-1">moamenyt@gmail.com</p>
+      <p class="mb-1"><?= $name; ?></p>
+      <p class="mb-1"><?= $address; ?></p>
+      <p class="mb-1"><?= $city; ?></p>
+      <p class="mb-1"><?= $phone; ?></p>
+      <p class="mb-1"><?= $email; ?></p>
     </div>
   </section>
 </main>

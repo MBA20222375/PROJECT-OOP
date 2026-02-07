@@ -32,35 +32,47 @@ $books = Book::getFavouriteBooks($db, $_SESSION['user_id']);
           <th class="d-table-cell d-md-none">product</th>
         </thead>
         <tbody class="text-center">
-          <?php
-          foreach ($books as $book):
-            $name = $book->getName();
-            $price = $book->getPrice();
-            $created_at = $book->getCreatedAt();
-            $priceAfterDiscount = $book->getPriceAfterDiscount();
-            $image = "public/uploads/" . $book->getImage();
-            $id = $book->getId();
+          <tr>
+            <?php
+            if (!is_null($books)):
+              foreach ($books as $book):
+                $name = $book->getName();
+                $price = $book->getPrice();
+                $created_at = $book->getCreatedAt();
+                $priceAfterDiscount = $book->getPriceAfterDiscount();
+                $image = "public/uploads/" . $book->getImage();
+                $id = $book->getId();
+                ?>
+                <td class="d-block d-md-table-cell">
+                  <a href="index.php?page=favourite-control&bookId=<?= $book->getId(); ?>&action=remove"
+                    class="text-decoration-none">
+                    <span class="favourites__remove m-auto">
 
-            ?>
+                      <i class="fa-solid fa-xmark"></i>
+                    </span>
+                  </a>
+
+                </td>
+                <td class="d-block d-md-table-cell favourites__img">
+                  <img src="<?= $image ?>" alt="" />
+                </td>
+                <td class="d-block d-md-table-cell">
+                  <a href="index.php?page=single_product&id=<?= $id; ?>"> <?= $name; ?> </a>
+                </td>
+                <td class="d-block d-md-table-cell">
+                  <span class="product__price product__price--old"><?= $price . " جنية" ?></span>
+                  <span class="product__price"><?= $priceAfterDiscount . " جنية" ?></span>
+                </td>
+                <td class="d-block d-md-table-cell"><?= $created_at->format('Y-m-d H:i:s') ?></td>
+              </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
             <tr>
               <td class="d-block d-md-table-cell">
-                <span class="favourites__remove m-auto">
-                  <i class="fa-solid fa-xmark"></i>
-                </span>
+                No products yet!
               </td>
-              <td class="d-block d-md-table-cell favourites__img">
-                <img src="<?= $image ?>" alt="" />
-              </td>
-              <td class="d-block d-md-table-cell">
-                <a href="index.php?page=single_product&id=<?= $id; ?>"> <?= $name; ?> </a>
-              </td>
-              <td class="d-block d-md-table-cell">
-                <span class="product__price product__price--old"><?= $price." جنية" ?></span>
-                <span class="product__price"><?= $priceAfterDiscount." جنية" ?></span>
-              </td>
-              <td class="d-block d-md-table-cell"><?= $created_at->format('Y-m-d H:i:s') ?></td>
-            </tr>
-          <?php endforeach; ?>
+            <?php endif; ?>
+          </tr>
         </tbody>
       </table>
     </section>

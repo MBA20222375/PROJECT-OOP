@@ -4,7 +4,7 @@
       <div class="section-container row">
         <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
           <div class="footer__logo">
-            <img class="w-100" src="assets/images/logo.png" alt="">
+            <img class="w-100" src="App/assets/images/logo.png" alt="">
           </div>
           <p class="my-3 text-gray">شركتنا هي أكبر شركة متخصصة لبيع الاحذية أونلاين وتوصيلها حتي المنزل.</p>
           <div class="footer__social d-flex gap-3">
@@ -71,14 +71,20 @@
       جميع الحقوق محفوظة Eraasoft 2023
     </div>
   </footer>
-  <!-- Footer Section End -->
-
+  <!-- Footer Section End-->
+  
   <script src="App/assets/js/vendors/all.min.js"></script>
-  <script src="App/assets/js/vendors/bootstrap.bundle.min.js"></script>
   <script src="App/assets/js/vendors/jquery-3.7.0.js"></script>
+  <script src="App/assets/js/vendors/bootstrap.bundle.min.js"></script>
   <script src="App/assets/js/vendors/owl.carousel.min.js"></script>
   <script src="App/assets/js/main.js"></script>
   <script src="App/assets/js/app.js"></script>
+  
+  <!-- <script src="App/assets/js/vendors/bootstrap.bundle.min.js"></script>
+  <script src="App/assets/js/vendors/jquery-3.7.0.js"></script>
+  <script src="App/assets/js/vendors/owl.carousel.min.js"></script>
+  <script src="App/assets/js/main.js"></script>
+  <script src="App/assets/js/app.js"></script> -->
 </body>
 
 </html>

@@ -19,7 +19,7 @@
 
                         if($user !== null){
                             set_messages([['content' => "register success!", 'type'=> 'success']]);
-                            header("Location: index.php?page=profile");
+                            header("Location: index.php?page=account");
                             die();
                         }
 

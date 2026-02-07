@@ -18,7 +18,9 @@ use PDO;
             }
 
             public static function add(PDO $pdo, int $user_id, int $book_id, DateTime $created_at = new DateTime()): Favourite|null{
-                $stmt = $pdo->prepare("INSERT INTO favourites(user_id, book_id) Values (?, ?) ;");      
+
+
+                $stmt = $pdo->prepare("INSERT IGNORE INTO favourites(user_id, book_id) Values (?, ?) ;");      
                 $success = $stmt->execute([$user_id, $book_id]);
             
                 if($success){

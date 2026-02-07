@@ -54,6 +54,10 @@ class Book
         return $this->created_at;
     }
 
+    public function getCategory(){
+        return $this->category;
+    }
+
     public function isRecent(): bool
     {
         return $this->created_at->diff(new DateTime())->days < 7;
@@ -103,11 +107,11 @@ class Book
         float $price,
         float $discount,
         ?string $description,
-        string $image,
+        array $image,
         string $category
     ): ?Book {
 
-        $imageName = null;
+        $imageName = "";
         if ($image && is_array($image)) {
             $imageName = self::uploadFile($image, 'books');
         }
@@ -152,11 +156,10 @@ class Book
         int $page_count,
         float $price,
         float $discount,
-        ?string $description,
-        string $image,
+        string $description,
+        array $image,
         string $authorName,
         string $category,
-        // array $tagIds = []
     ): ?Book {
 
         $book = self::create(
@@ -164,10 +167,10 @@ class Book
             $name,
             $page_count,
             $price,
-            $category,
             $discount,
             $description,
             $image,
+            $category
         );
 
         if (!$book) {
@@ -218,10 +221,12 @@ class Book
 
     public static function getProductByID(PDO $pdo, int $id): Book|null
     {
-        $stmt = $pdo->prepare("SELECT * FROM books WHERE id = ? LIMIT = 1");
+        $stmt = $pdo->prepare("SELECT * FROM books WHERE id = ? LIMIT 1");
         if (!$stmt) {
             return null;
         }
+
+        $stmt->execute([$id]);
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         if (!$row) {
@@ -375,9 +380,71 @@ class Book
         );
     }
 
+    public static function getTop10Sold(PDO $pdo): ?array
+    {
+        $stmt = $pdo->query("SELECT 
+            b.*
+            FROM order_items oi
+            JOIN books b ON b.id = oi.book_id
+            GROUP BY b.id
+            ORDER BY SUM(oi.qty) DESC
+            LIMIT 10;
+            ");
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (!$rows) {
+            return null;
+        }
+
+        $books = [];
+        foreach($rows as $row){
+            $books[] = new self(
+                (int) $row['id'],
+                $row['name'],
+                (int) $row['page_count'],
+                (float) $row['price'],
+                new DateTime($row['created_at']),
+                $row['category'],
+                (float) $row['discount'],
+                $row['image'],
+                $row['description'],
+            );
+        }
+        return $books;
+    }
 
 
+    public static function getBooksByCategory(PDO $pdo, string $category): ?array
+    {
+        $stmt = $pdo->prepare("SELECT * FROM books WHERE category = ? ;");
 
+        if(!$stmt){
+            return [];
+        }
 
+        $stmt->execute([$category]);
 
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (!$rows) {
+            return null;
+        }
+
+        $books = [];
+        foreach($rows as $row){
+            $books[] = new self(
+                (int) $row['id'],
+                $row['name'],
+                (int) $row['page_count'],
+                (float) $row['price'],
+                new DateTime($row['created_at']),
+                $row['category'],
+                (float) $row['discount'],
+                $row['image'],
+                $row['description'],
+            );
+        }
+        return $books;
+    }
 }

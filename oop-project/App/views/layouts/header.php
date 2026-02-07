@@ -111,8 +111,8 @@
 
 
                             <li class="nav__link">
-                                <a class="d-flex align-items-center gap-2" data-bs-toggle="offcanvas"
-                                    data-bs-target="#nav__cart">
+                                <a class="d-flex align-items-center gap-2"
+                                    href="index.php?page=cart">
                                     عربة التسوق
                                     <div class="position-relative">
                                         <i class="fa-solid fa-cart-shopping"></i>
@@ -184,9 +184,9 @@
                     </div>
 
                     <ul class="nav__list list-unstyled">
-                        <li class="nav__side-link"><a href="index.php?page=shop">جميع المنتجات</a></li>
-                        <li class="nav__side-link"><a href="index.php?page=shop">كتب عربية</a></li>
-                        <li class="nav__side-link"><a href="index.php?page=shop">كتب انجليزية</a></li>
+                        <li class="nav__side-link"><a href="index.php?page=shop&category=all">جميع المنتجات</a></li>
+                        <li class="nav__side-link"><a href="index.php?page=shop&category=arabic">كتب عربية</a></li>
+                        <li class="nav__side-link"><a href="index.php?page=shop&category=english">كتب انجليزية</a></li>
                     </ul>
                 </div>
             </div>
@@ -201,4 +201,3 @@
     </div>
     <!-- Header Content End -->
 
-    <script src="App/assets/js/vendors/bootstrap.bundle.min.js"></script>

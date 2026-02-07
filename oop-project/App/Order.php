@@ -16,77 +16,98 @@ class Order
     public function getUserOrders(int $userId): array
     {
         $stmt = $this->connection->prepare("
-            SELECT o.*, oi.quantity, oi.price as item_price, 
-                   p.name as product_name, p.image as product_image,
-                   CONCAT(u.first_name, ' ', u.last_name) as customer_name,
-                   u.email as customer_email, u.phone as customer_phone
-            FROM orders o
-            LEFT JOIN order_items oi ON o.id = oi.order_id
-            LEFT JOIN products p ON oi.product_id = p.id
-            LEFT JOIN users u ON o.user_id = u.id
-            WHERE o.user_id = :user_id
-            ORDER BY o.created_at DESC
+        SELECT * FROM orders WHERE user_id = ?;
         ");
-        $stmt->execute(['user_id' => $userId]);
+
+        $stmt->execute([$userId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getOrderById(int $orderId)
+    public static function getOrderById(PDO $db, int $orderId): array
     {
-        $stmt = $this->connection->prepare("
-            SELECT o.*, oi.quantity, oi.price as item_price, 
-                   p.name as product_name, p.image as product_image,
-                   CONCAT(u.first_name, ' ', u.last_name) as customer_name,
-                   u.email as customer_email, u.phone as customer_phone,
-                   u.address as customer_address
-            FROM orders o
-            LEFT JOIN order_items oi ON o.id = oi.order_id
-            LEFT JOIN products p ON oi.product_id = p.id
-            LEFT JOIN users u ON o.user_id = u.id
-            WHERE o.id = :order_id
+        $stmt = $db->prepare("
+            SELECT * FROM orders
+            WHERE id = ?
         ");
-        $stmt->execute(['order_id' => $orderId]);
+        $stmt->execute([$orderId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function getOrderItemsById(PDO $db, int $orderId): array
+    {
+        $stmt = $db->prepare("
+            SELECT * FROM order_items
+            WHERE order_id = ?
+        ");
+        $stmt->execute([$orderId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function createOrder(array $orderData): int
+    public static function getOrderTotal(PDO $db, int $orderId): array
+    {
+        $stmt = $db->prepare("
+            SELECT SUM(oi.book_price * oi.qty) AS total
+            FROM order_items oi
+            WHERE oi.order_id = ?;
+        ");
+        $stmt->execute([$orderId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
+    public function createOrder(array $orderData, array $orderItems): int
     {
         $stmt = $this->connection->prepare("
-            INSERT INTO orders (user_id, total_amount, status, payment_method, shipping_address, created_at)
-            VALUES (:user_id, :total_amount, :status, :payment_method, :shipping_address, NOW())
+            INSERT INTO orders (user_id, name, city, address, phone, email, payment_type, additional_information,  status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         ");
-        
+
         $stmt->execute([
-            'user_id' => $orderData['user_id'],
-            'total_amount' => $orderData['total_amount'],
-            'status' => $orderData['status'] ?? 'pending',
-            'payment_method' => $orderData['payment_method'],
-            'shipping_address' => $orderData['shipping_address']
+            $orderData['user_id'],
+            $orderData['name'],
+            $orderData['city'],
+            $orderData['address'],
+            $orderData['phone'],
+            $orderData['email'],
+            $orderData['payment_type'],
+            $orderData['additional_information'],
+            $orderData['status']
         ]);
-        
-        return $this->connection->lastInsertId();
+
+        $order_id = $this->connection->lastInsertId();
+
+        foreach ($orderItems as $item) {
+            $product_id = $item['product']->getId();
+            $quantity = $item['quantity'];
+            $price = $item['product']->getDiscount === 0 ? $item['product']->getPrice() : $item['product']->getPriceAfterDiscount();
+            $discount = $item['product']->getDiscount();
+            $this->addOrderItem($order_id, $product_id, $quantity, $price, $discount);
+        }
+
+        return $order_id;
     }
 
-    public function addOrderItem(int $orderId, int $productId, int $quantity, float $price): void
+    public function addOrderItem(int $orderId, int $productId, int $quantity, float $price, float $discount): void
     {
         $stmt = $this->connection->prepare("
-            INSERT INTO order_items (order_id, product_id, quantity, price)
-            VALUES (:order_id, :product_id, :quantity, :price)
+            INSERT INTO order_items (order_id, book_id, qty, book_price, book_discount)
+            VALUES (?, ?, ?, ?, ?)
         ");
-        
+
         $stmt->execute([
-            'order_id' => $orderId,
-            'product_id' => $productId,
-            'quantity' => $quantity,
-            'price' => $price
+            $orderId,
+            $productId,
+            $quantity,
+            $price,
+            $discount
         ]);
     }
 
     public function updateOrderStatus(int $orderId, string $status): void
     {
         $stmt = $this->connection->prepare("
-            UPDATE orders SET status = :status WHERE id = :order_id
+            UPDATE orders SET status = ? WHERE id = ?
         ");
-        $stmt->execute(['status' => $status, 'order_id' => $orderId]);
+        $stmt->execute([$status, $orderId]);
     }
 }
