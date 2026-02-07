@@ -1,3 +1,10 @@
+<?php
+  if(!isset($_SESSION['user_id'], $_SESSION['role'])&& $_SESSION['role']==="admin"){
+    header("Location: index.php?page=account");
+    die();
+  }
+?>
+
 <main class="mb-4">
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">

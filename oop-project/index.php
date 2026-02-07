@@ -102,6 +102,12 @@ switch ($page) {
     case "order-control":
         require "App/controllers/OrderController.php";
         break;
+    case "admin-add":
+        require "App/views/auth/add_new_admin.php";
+        break;
+    case "admin-control":
+        require "App/controllers/AdminController.php";
+        break;
     default:
         require "App/views/home.php";
         break;

@@ -101,6 +101,7 @@ class User
                 }
 
                 $_SESSION['user_id'] = $row['id'];
+                $_SESSION['role'] = $row['role'];
 
                 return new User($row['id'], $row['name'], $row['email'], $row['password'], $row['role']);
             }

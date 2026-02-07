@@ -1,5 +1,8 @@
 <?php
-
+  if(!isset($_SESSION['user_id'])){
+    header("Location: index.php?page=account");
+    die();
+  }
 use Oop\Project\Book;
 
 $books = Book::getFavouriteBooks($db, $_SESSION['user_id']);

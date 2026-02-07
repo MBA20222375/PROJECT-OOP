@@ -110,4 +110,16 @@ class Order
         ");
         $stmt->execute([$status, $orderId]);
     }
+
+    public static function getOrderItemsByOrderId(PDO $db, int $id){
+        $stmt = $db->prepare("
+            SELECT oi.* FROM
+            orders o LEFT JOIN order_items oi
+            ON o.id = oi.order_id
+            WHERE o.id = ?
+            ;
+        ");
+        $stmt->execute([$id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

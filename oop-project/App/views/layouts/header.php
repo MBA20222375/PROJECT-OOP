@@ -91,13 +91,24 @@
                                     <i class="fa-regular fa-user"></i>
                                 </a>
                             </li>
-                        <?php else: ?>
+                        <?php 
+                            else:
+                                if(isset($_SESSION['role'])&&$_SESSION['role']==="admin"): 
+                        ?>
+
                             <li class="nav__link">
                                 <a class="d-flex align-items-center gap-2" href="index.php?page=create-product">
                                     اضافة منتج
                                     <i class="fa-solid fa-circle-plus"></i>
                                 </a>
                             </li>
+                            <li class="nav__link">
+                                <a class="d-flex align-items-center gap-2" href="index.php?page=admin-add">
+                                    اضافة مشرف
+                                    <i class="fa-solid fa-circle-plus"></i>
+                                </a>
+                            </li>
+                            <?php endif;?>
 
                             <li class="nav__link">
                                 <a class="d-flex align-items-center gap-2" href="index.php?page=favourites">

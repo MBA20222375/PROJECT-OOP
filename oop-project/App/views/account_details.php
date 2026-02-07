@@ -1,3 +1,10 @@
+<?php
+  if(!isset($_SESSION['user_id'])){
+    header("Location: index.php?page=account");
+    die();
+  }
+?>
+
 <main>
       <section
         class="page-top d-flex justify-content-center align-items-center flex-column text-center"

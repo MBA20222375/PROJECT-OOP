@@ -1,3 +1,9 @@
+<?php
+  if(!isset($_SESSION['user_id'])){
+    header("Location: index.php?page=account");
+    die();
+  }
+?>
 <main>
   <div class="page-top d-flex justify-content-center align-items-center flex-column text-center">
     <div class="page-top__overlay"></div>
@@ -11,12 +17,18 @@
       </div>
     </div>
   </div>
+<?php
 
+use Oop\Project\Book;
+use Oop\Project\Order;
+
+  $order = Order::getOrderById($db, $_GET['order_id']);
+  $items = Order::getOrderItemsByOrderId($db, $order['id']);
+?>
   <section class="section-container my-5 py-5">
     <p>
-      تم تقديم الطلب #79917 في يوليو 26, 2023 وهو الآن بحالة قيد التنفيذ.
+      <?php echo "تم تقديم الطلب #{$order['id']} في {$order['created_at']} وهو الآن بحالة {$order['status']}."?>
     </p>
-
     <section>
       <h2>تفاصيل الطلب</h2>
       <table class="success__table w-100 mb-5">
@@ -27,43 +39,31 @@
           </tr>
         </thead>
         <tbody>
+          <?php
+            $total = 0.0;
+            foreach($items as $item):
+              $book = Book::getProductByID($db, $item['book_id']);
+              $total += $book->getDiscount()===0? $book->getPrice(): $book->getPriceAfterDiscount();
+          ?>
           <tr>
             <td>
               <div>
-                <a href="">كوتش فلات ديزارت -رجالى - الابيض, 42</a> x 1
+                <a href="index.php?page=single_product&id=<?= $book->getId(); ?>"><?= $book->getName(); ?></a> <?= " * ".$item['qty']; ?>
               </div>
               <div>
-                <span class="fw-bold">اللون:</span>
-                <span>لابيض</span>
-              </div>
-              <div>
-                <span class="fw-bold">المقاس:</span>
-                <span>42</span>
+                <span class="fw-bold"><?= $book->getDescription(); ?></span>
               </div>
             </td>
-            <td>200.00 جنيه</td>
+            <td><?= $book->getDiscount()===0? $book->getPrice(): $book->getPriceAfterDiscount(); ?></td>
           </tr>
-          <tr>
-            <td>
-              <div><a href="">كوتش كاجوال -رجالى - بنى, 43</a> x 1</div>
-              <div>
-                <span class="fw-bold">اللون:</span>
-                <span>بني</span>
-              </div>
-              <div>
-                <span class="fw-bold">المقاس:</span>
-                <span>43</span>
-              </div>
-            </td>
-            <td>150.00 جنيه</td>
-          </tr>
+          <?php endforeach;?>
           <tr>
             <th>المجموع:</th>
-            <td class="fw-bolder">350.00 جنيه</td>
+            <td class="fw-bolder"><?= $total; ?></td>
           </tr>
           <tr>
             <th>الإجمالي:</th>
-            <td class="fw-bold">389.00 جنيه</td>
+            <td class="fw-bold"><?= $total; ?></td>
           </tr>
         </tbody>
       </table>
@@ -71,11 +71,11 @@
     <section class="mb-5">
       <h2>عنوان الفاتورة</h2>
       <div class="border p-3 rounded-3">
-        <p class="mb-1">محمد محسن</p>
-        <p class="mb-1">43 الاتحاد</p>
-        <p class="mb-1">القاهرة</p>
-        <p class="mb-1">01020288964</p>
-        <p class="mb-1">moamenyt@gmail.com</p>
+        <p class="mb-1"><?= $order['name'] ?></p>
+        <p class="mb-1"><?= $order['address'] ?></p>
+        <p class="mb-1"><?= $order['city'] ?></p>
+        <p class="mb-1"><?= $order['phone'] ?></p>
+        <p class="mb-1"><?= $order['email'] ?></p>
       </div>
     </section>
   </section>

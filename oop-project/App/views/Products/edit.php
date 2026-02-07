@@ -1,6 +1,10 @@
 <?php
 
 use Oop\Project\Book;
+  if(!isset($_SESSION['user_id'], $_SESSION['role'])&& $_SESSION['role']==="admin"){
+    header("Location: index.php?page=account");
+    die();
+  }
 
 $book = null;
 if (isset($_GET['id'])) {

@@ -2,7 +2,10 @@
 
 use Oop\Project\Book;
 use Oop\Project\Order;
-
+  if(!isset($_SESSION['user_id'])){
+    header("Location: index.php?page=account");
+    die();
+  }
   if(!isset($_GET['id'])){
     header("Location: index.php?page=home");
     die();
