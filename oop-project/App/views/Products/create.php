@@ -1,17 +1,10 @@
-<?php
-  if(!isset($_SESSION['user_id'], $_SESSION['role'])&& $_SESSION['role']==="admin"){
-    header("Location: index.php?page=account");
-    die();
-  }
-?>
-
 <main class="mb-4">
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="my-5">
 
-          <form method="post" enctype="multipart/form-data" action="index.php?page=store-product">
+          <form method="post" enctype="multipart/form-data" action="index.php?page=product-control&action=create">
 
             <!-- name -->
             <div class="form-floating mb-3">
@@ -41,6 +34,20 @@
             <div class="form-floating mb-3">
               <textarea class="form-control" name="description" style="height: 120px"></textarea>
               <label>Description</label>
+            </div>
+
+            <div class="mb-3">
+              <label for="reason"> نوع الكتاب <span class="required">*</span></label>
+              <select class="contact__input" id="reason" name="category" required>
+                <option value="">- اضغط هنا اختيار نوع الكتاب -</option>
+                <option value="كتاب بالغه الانجليزيه">كتاب بالغه الانجليزيه</option>
+                <option value="كتاب بالغه العربيه">كتاب بالغه العربيه</option>
+              </select>
+            </div>
+            <!-- Author -->
+             <div class="form-floating mb-3">
+              <input class="form-control" name="author" type="text" />
+              <label>Author</label>
             </div>
 
             <!-- image -->

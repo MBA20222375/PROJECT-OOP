@@ -447,4 +447,20 @@ class Book
         }
         return $books;
     }
+
+    public static function deleteBook(PDO $pdo, int $id):bool{
+        $stmt = $pdo->prepare("DELETE FROM books WHERE id = ? ;");
+
+        if(!$stmt){
+            return false;
+        }
+
+        $stmt->execute([$id]);
+
+        if (!$stmt) {
+            return false;
+        }
+
+        return true;
+    }
 }

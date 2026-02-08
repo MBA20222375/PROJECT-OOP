@@ -51,6 +51,7 @@
                     </div>
                 </div>
             </header>
+             <?php get_messages(); ?>
 
             <!-- navbar -->
             <nav class="nav">
@@ -208,7 +209,8 @@
             شحن مجاني للطلبات 💥 عند الشراء ب 699ج او اكثر
         </section>
 
-        <?php get_messages(); ?>
+       
     </div>
+    
     <!-- Header Content End -->
 

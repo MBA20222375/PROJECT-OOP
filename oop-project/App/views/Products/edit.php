@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="my-5">
 
-          <form method="post" enctype="multipart/form-data" action="index.php?page=update-product&id=<?php echo $book ? $book->getId() : ''; ?>">
+          <form method="post" enctype="multipart/form-data" action="index.php?page=product-control&id=<?php echo $book ? $book->getId() : ''; ?>">
             <input type="hidden" name="id" value="<?php echo $book ? $book->getId() : ''; ?>">
 
             <!-- name -->
@@ -75,7 +75,7 @@ if (isset($_GET['id'])) {
               <?php echo $book ? 'Update Book' : 'Add Book'; ?>
             </button>
             <?php if ($book): ?>
-            <a href="index.php?page=delete-product&id=<?php echo $book->getId(); ?>" class="btn btn-danger text-uppercase mt-4" onclick="return confirm('Are you sure you want to delete this book?');">
+            <a href="index.php?page=product-control&id=<?php echo $book->getId(); ?>&action=remove" class="btn btn-danger text-uppercase mt-4" onclick="return confirm('Are you sure you want to delete this book?');">
               Delete Book
             </a>
             <?php endif; ?>

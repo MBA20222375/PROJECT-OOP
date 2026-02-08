@@ -80,12 +80,12 @@ use Oop\Project\Order;
       <tbody>
         <?php foreach($orderItems as $orderItem):
           $book = Book::getProductByID($db, $orderItem['book_id']);
-          $total += $book->getDiscount()===0? $book->getPrice():$book->getPriceAfterDiscount();
+          $total += ($book->getDiscount()===0? $book->getPrice():$book->getPriceAfterDiscount())*$orderItem['qty'];
         ?>
         <tr>
           <td>
             <div>
-              <a href="<?php echo "index.php?page=single_product&id={$orderItem['book_id']}"?>"><?= $book->getName(); ?></a> x 1
+              <a href="<?php echo "index.php?page=single_product&id={$orderItem['book_id']}"?>"><?= $book->getName(); ?></a> x <?= $orderItem['qty']; ?>
             </div>
             <div>
               <span><?= $book->getDescription(); ?></span>
