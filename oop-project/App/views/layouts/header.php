@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </header>
-             <?php get_messages(); ?>
+            <?php get_messages(); ?>
 
             <!-- navbar -->
             <nav class="nav">
@@ -92,43 +92,51 @@
                                     <i class="fa-regular fa-user"></i>
                                 </a>
                             </li>
-                        <?php 
-                            else:
-                                if(isset($_SESSION['role'])&&$_SESSION['role']==="admin"): 
-                        ?>
+                            <?php
+                        else:
+                            if (isset($_SESSION['role']) && $_SESSION['role'] === "admin"):
+                                ?>
+
+                                <li class="nav__link">
+                                    <a class="d-flex align-items-center gap-2" href="index.php?page=create-product">
+                                        اضافة منتج
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                    </a>
+                                </li>
+                                <li class="nav__link">
+                                    <a class="d-flex align-items-center gap-2" href="index.php?page=admin-add">
+                                        اضافة مشرف
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
 
                             <li class="nav__link">
-                                <a class="d-flex align-items-center gap-2" href="index.php?page=create-product">
-                                    اضافة منتج
-                                    <i class="fa-solid fa-circle-plus"></i>
+                                <a class="d-flex align-items-center gap-2" href="index.php?page=profile">
+                                    حسابي
+
+                                    <div class="position-relative">
+                                        <i class="fa-regular fa-user"></i>
+                                    </div>
+
                                 </a>
                             </li>
-                            <li class="nav__link">
-                                <a class="d-flex align-items-center gap-2" href="index.php?page=admin-add">
-                                    اضافة مشرف
-                                    <i class="fa-solid fa-circle-plus"></i>
-                                </a>
-                            </li>
-                            <?php endif;?>
 
                             <li class="nav__link">
                                 <a class="d-flex align-items-center gap-2" href="index.php?page=favourites">
                                     المفضلة
                                     <div class="position-relative">
                                         <i class="fa-regular fa-heart"></i>
-                                        <div class="nav__link-floating-icon">0</div>
                                     </div>
                                 </a>
                             </li>
 
 
                             <li class="nav__link">
-                                <a class="d-flex align-items-center gap-2"
-                                    href="index.php?page=cart">
+                                <a class="d-flex align-items-center gap-2" href="index.php?page=cart">
                                     عربة التسوق
                                     <div class="position-relative">
                                         <i class="fa-solid fa-cart-shopping"></i>
-                                        <div class="nav__link-floating-icon">0</div>
                                     </div>
                                 </a>
                             </li>
@@ -209,8 +217,7 @@
             شحن مجاني للطلبات 💥 عند الشراء ب 699ج او اكثر
         </section>
 
-       
-    </div>
-    
-    <!-- Header Content End -->
 
+    </div>
+
+    <!-- Header Content End -->

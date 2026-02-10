@@ -2,12 +2,13 @@
 
 
 use Oop\Project\details;
+use Oop\Project\User;
 
-class AccountController
+class AccountDetailsController
 {
     public static function handle($pdo)
     {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        if (($_SERVER['REQUEST_METHOD'] !== 'POST') || (!isset($_SESSION['user_id']))) {
             return;
         }
 
@@ -22,43 +23,62 @@ class AccountController
 
     private static function updateAccount($pdo)
     {
-        $name  = trim($_POST['name']);
+        $fName = trim($_POST['first-name']);
+        $lName = trim($_POST['last-name']);
+        $name = $fName . " " . $lName;
         $email = trim($_POST['email']);
-        $userId = $_SESSION['user']['id'];
+
+        $userId = $_SESSION['user_id'];
 
         if ($name === '' || $email === '') {
-            $_SESSION['error'] = 'الاسم والإيميل مطلوبين';
-            return;
+            set_messages([['content' => 'الاسم والإيميل مطلوبين', 'type' => 'danger']]);
+
+            header("Location: index.php?page=account_details");
+            die();
         }
 
         details::updateInfo($pdo, $userId, $name, $email);
 
-        $_SESSION['user']['name']  = $name;
+        $_SESSION['user']['name'] = $name;
         $_SESSION['user']['email'] = $email;
 
-        $_SESSION['success'] = 'تم تحديث البيانات بنجاح';
+        set_messages([['content' => 'تم تحديث البيانات بنجاح', 'type' => 'success']]);
+
+        header("Location: index.php?page=account_details");
+        die();
     }
 
     private static function changePassword($pdo)
     {
         $current = $_POST['current_password'] ?? '';
-        $new     = $_POST['new_password'] ?? '';
+        $new = $_POST['new_password'] ?? '';
         $confirm = $_POST['confirm_password'] ?? '';
 
         if ($new === '' || $new !== $confirm) {
-            $_SESSION['error'] = 'كلمة المرور غير متطابقة';
-            return;
+            set_messages([['content' => 'كلمة المرور غير متطابقة', 'type' => 'danger']]);
+
+            header("Location: index.php?page=account_details");
+            die();
         }
 
-        if (!password_verify($current, $_SESSION['user']['password'])) {
-            $_SESSION['error'] = 'كلمة المرور الحالية غير صحيحة';
-            return;
+        $user = User::getUserById($pdo, $_SESSION['user_id']);
+
+        if (!password_verify($current, $user->getPassword())) {
+            set_messages([['content' => 'كلمة المرور الحالية غير صحيحة', 'type' => 'danger']]);
+
+            header("Location: index.php?page=account_details");
+            die();
         }
 
         $hashed = password_hash($new, PASSWORD_DEFAULT);
 
-        details::updatePassword($pdo, $_SESSION['user']['id'], $hashed);
+        details::updatePassword($pdo, $_SESSION['user_id'], $hashed);
 
-        $_SESSION['success'] = 'تم تغيير كلمة المرور بنجاح';
+        set_messages([['content' => 'تم تغيير كلمة المرور بنجاح', 'type' => 'success']]);
+
+        header("Location: index.php?page=account_details");
+        die();
     }
 }
+
+AccountDetailsController::handle($db);

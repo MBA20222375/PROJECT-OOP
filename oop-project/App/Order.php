@@ -23,6 +23,15 @@ class Order
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getAllOrders(): array
+    {
+        $stmt = $this->connection->query("
+        SELECT * FROM orders;
+        ");
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public static function getOrderById(PDO $db, int $orderId): array
     {
         $stmt = $db->prepare("
@@ -111,7 +120,7 @@ class Order
         $stmt->execute([$status, $orderId]);
     }
 
-    public static function getOrderItemsByOrderId(PDO $db, int $id){
+    public static function getOrderItemsByOrderId(PDO $db, int $id):array{
         $stmt = $db->prepare("
             SELECT oi.* FROM
             orders o LEFT JOIN order_items oi

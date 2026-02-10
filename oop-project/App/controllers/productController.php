@@ -36,7 +36,6 @@ class ProductController
 
         $author = $_POST['author'];
         $category = $_POST['category'];
-        //$tagIds      = $_POST['tag'];
 
         $image = $_FILES['image'] ?? null;
 

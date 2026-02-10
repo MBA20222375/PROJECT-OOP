@@ -115,6 +115,12 @@ switch ($page) {
     case "admin-control":
         require "App/controllers/AdminController.php";
         break;
+    case "account-details-control":
+        require "App/controllers/account_detailsController.php";
+        break;
+    case "orders-control":
+        require "App/views/all_orders.php";
+        break;
     default:
         require "App/views/home.php";
         break;

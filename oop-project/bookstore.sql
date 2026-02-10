@@ -4,122 +4,125 @@ COLLATE utf8mb4_unicode_ci;
 
 USE bookstore;
 
-CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    role VARCHAR(50) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  role VARCHAR(50) NOT NULL DEFAULT 'user',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
-CREATE TABLE IF NOT EXISTS authors (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-);
+CREATE TABLE authors (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
-CREATE TABLE IF NOT EXISTS books (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    page_count INT NOT NULL,
-    image VARCHAR(255) NOT NULL,
-    price DECIMAL(8,2) NOT NULL,
-    discount DECIMAL(8,2) DEFAULT 0,
-    description TEXT,
-    reason ENUM(
-        'كتاب بالغه العربيه',
-        'كتاب بالغه الانجليزيه'
-    ) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+CREATE TABLE tags (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
-CREATE TABLE IF NOT EXISTS books_authors (
-    book_id INT NOT NULL,
-    author_id INT NOT NULL,
-    PRIMARY KEY (book_id, author_id),
-    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE,
-    FOREIGN KEY (author_id) REFERENCES authors(id) ON DELETE CASCADE
-);
+CREATE TABLE books (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  page_count INT NOT NULL,
+  image VARCHAR(255) NOT NULL,
+  price DECIMAL(8,2) NOT NULL,
+  discount DECIMAL(8,2) DEFAULT 0.00,
+  description TEXT,
+  category ENUM('كتاب بالغه العربيه','كتاب بالغه الانجليزيه') NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE IF NOT EXISTS tags (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL
-);
 
-CREATE TABLE IF NOT EXISTS books_tags (
-    book_id INT NOT NULL,
-    tag_id INT NOT NULL,
-    PRIMARY KEY (book_id, tag_id),
-    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE,
-    FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
-);
+CREATE TABLE books_authors (
+  book_id INT NOT NULL,
+  author_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (book_id, author_id),
+  FOREIGN KEY (book_id) REFERENCES books(id)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (author_id) REFERENCES authors(id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE IF NOT EXISTS categories (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-);
 
-CREATE TABLE IF NOT EXISTS book_categories (
-    book_id INT NOT NULL,
-    category_id INT NOT NULL,
-    PRIMARY KEY (book_id, category_id),
-    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE,
-    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
-);
+CREATE TABLE books_tags (
+  book_id INT NOT NULL,
+  tag_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (book_id, tag_id),
+  FOREIGN KEY (book_id) REFERENCES books(id)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (tag_id) REFERENCES tags(id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE IF NOT EXISTS users_favourites (
-    user_id INT NOT NULL,
-    book_id INT NOT NULL,
-    PRIMARY KEY (user_id, book_id),
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
-);
 
-CREATE TABLE IF NOT EXISTS orders (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    city VARCHAR(255) NOT NULL,
-    address TEXT NOT NULL,
-    phone VARCHAR(20) NOT NULL,
-    email VARCHAR(100),
-    additional_information TEXT,
-    payment_type VARCHAR(50) DEFAULT "COD",
-    status VARCHAR(50) DEFAULT "pending",
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id)
-);
+CREATE TABLE favourites (
+  user_id INT NOT NULL,
+  book_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (user_id, book_id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (book_id) REFERENCES books(id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE IF NOT EXISTS order_items (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    order_id INT NOT NULL,
-    book_id INT NOT NULL,
-    qty INT DEFAULT 1,
-    book_price DECIMAL(8,2) NOT NULL,
-    book_discount DECIMAL(8,2) NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
-    FOREIGN KEY (book_id) REFERENCES books(id)
-);
 
-CREATE TABLE IF NOT EXISTS contact (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(150) NOT NULL,
-    phone VARCHAR(20) NOT NULL,
-    email VARCHAR(150) NOT NULL,
-    reason ENUM(
-        'استفسار',
-        'استبدال',
-        'استرجاع',
-        'استعجال اوردر',
-        'اخري'
-    ) NOT NULL,
-    message TEXT NOT NULL,
-    status ENUM('جديد', 'تم الرد', 'مغلق') DEFAULT 'جديد',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+CREATE TABLE orders (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  user_id INT NOT NULL,
+  city VARCHAR(255) NOT NULL,
+  address TEXT NOT NULL,
+  phone VARCHAR(20) NOT NULL,
+  email VARCHAR(100),
+  payment_type VARCHAR(50) DEFAULT 'COD',
+  additional_information TEXT,
+  status VARCHAR(50) DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+    ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
+CREATE TABLE order_items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  order_id INT NOT NULL,
+  book_id INT NOT NULL,
+  qty INT DEFAULT 1,
+  book_price DECIMAL(8,2) NOT NULL,
+  book_discount DECIMAL(8,2) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (order_id) REFERENCES orders(id)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (book_id) REFERENCES books(id)
+    ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+CREATE TABLE contact (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150) NOT NULL,
+  phone VARCHAR(20) NOT NULL,
+  email VARCHAR(150) NOT NULL,
+  reason ENUM('استفسار','استبدال','استرجاع','استعجال اوردر','اخري') NOT NULL,
+  message TEXT NOT NULL,
+  status ENUM('جديد','تم الرد','مغلق') DEFAULT 'جديد',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
